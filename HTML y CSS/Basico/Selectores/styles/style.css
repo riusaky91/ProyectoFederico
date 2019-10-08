@@ -1,0 +1,139 @@
+
+/*selector simple*/
+
+h1 {
+    colour: blue;
+    background-color: yellow;
+    border: 1px solid black;
+  }
+  
+p {
+  color: red;
+}
+
+p, li {
+  text-decoration: underline;
+}
+
+
+
+/*Selector de Atributos*/
+
+[data-vegetable]{/*todos los elementos que tengan el atributo data-vegetable*/
+  color:green;
+}
+
+[data-vegetable="liquid"]{/*todos los elementos que tengan el atributo data-vegetable con el valor liquid*/
+  color:goldenrod;
+}
+
+[data-vegetable~="spicy"]{/*todos los elementos que tengan el atributo data-vegetable y contengan el valor spicy*/
+  color:red;
+}
+
+
+
+/*Pseudo clases y pseudo atributos*/
+
+a{/*color de enlace en estado normal*/
+    color: blue;
+    font-weight: bold;
+}
+
+a:visited{/*color cuando el link sea visitado*/
+  color: blue;
+} 
+
+a:hover,a:active,a:focus{/*cuando paso el mouse, cuando los presiono, */
+  color: darkred;
+  text-decoration: none;
+}
+
+
+/*Sellector de clases*/
+
+.first {/* El elemento con la clase "first" está en negrita */
+    font-weight: bold;
+  }
+ 
+.done { /* Todos los elementos con la clase "done" están tachados */
+  text-decoration: line-through;
+}
+
+
+
+/*Selector ID*/
+  
+#polite {
+    font-family: cursive;
+  }
+  
+#rude {
+  font-family: monospace;
+  text-transform: uppercase;
+}
+
+/*Combinaciones de selectores*/
+
+.uno, .dos, .tres, .cuatro{/*Todas las clases seleccionadas son afectadas*/
+  color: purple;
+  text-decoration: none;
+}
+
+.numeros .uno{/* Todas las clases hijo y sus hijos de .numeros son afectadas*/
+  font-family: cursive;
+}
+
+
+.numeros > .uno{/*Solo el hijo de .numeros sera afectado*/
+  color: salmon;
+}
+
+.dos + .tres{/*Solo si el primer elemento precede al segundo elemento y son hermanos*/
+  color: seagreen;
+}
+
+.dos ~.tres{/*el siguiente hermano del primer elmento sera afectado*/
+  background: yellow;
+  font-family: 'Sunflower', sans-serif;
+  font-size: 10px;
+  
+}
+
+
+/*Posicionamiento Simple*/
+
+body {
+  width: 500px; /*tamaño de el cuerpo*/
+  margin: 0 auto;/*centrado*/
+}
+
+[posicionamiento]{
+  background: aqua;/*fondo*/
+  border: 3px solid blue;/*borde*/
+  padding: 10px;/*Entre el borde y el contenido*/
+  margin: 10px;/*Entre el borde y el otro elemento*/ 
+  text-decoration: none;
+}
+
+[posicionamiento="relativo"]{
+  position: relative;/*posicionamiento relativo sobre el bloque*/
+  background: yellow;
+  top: 30px;/*desplazamiento hacia arriba*/
+  left: 30px;/*desplazamiento hacia la izquierda*/
+}
+
+[posicionamiento="absoluto"]{
+  position: absolute;/*posicionamiento absoluto sobre la pagina*/
+  background: yellow;
+  top: 30px;/*desplazamiento hacia arriba*/
+  left: 30px;/*desplazamiento hacia la izquierda*/
+}
+
+[posicionamiento="fijo"]{
+  position: fixed;/*posicionamiento fijo sobre la pagina asi se desplaze va a permanecer*/
+  background: purple;
+  top: 10px;/*desplazamiento hacia arriba*/
+  left: 100px;/*desplazamiento hacia la izquierda*/
+}
+
