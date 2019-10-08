@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--ESTRUCTURA PAGINA WEB HTML5-->
+
+    <header><!--Se usa para definir elementos del encabezado dentro de el.-->
+        <h1>Encabezado</h1>
+    </header>
+    <hr>
+    <nav><!--Seccion de la pagina con hipervinculos de navegacion.-->
+        <ul>
+            <li>
+                <a href="www.google.com.co">Google</a>
+            </li>
+            <li>
+                <a href="www.youtube.com.co">Youtube</a>
+            </li>
+        </ul>
+
+    </nav>
+    <hr>
+    <section><!--Contenedor logico de la pagina que divide contenido de  articulos-->
+        <h1>Secion de articulos</h1>
+        <article><!--Elemento interno independiente y autonomo-->
+            <h1>Titulo del articulo</h1>
+            <p>Contenidos del elemento</p>
+            <aside><!--Elemento de apoyo complementando la infromacion del articulo.-->
+                <p>
+                    <em>
+                        Este articulo no es de caracter cientifico por lo tanto no puede ser considerado un hecho.
+                    </em>
+                </p>
+            </aside>
+        </article>
+        <h1>Secion de noticias</h1>
+        <article>
+            <h1>Titulo de la noticia</h1>
+            <p>Contenidos del elemento</p>
+        </article>
+    </section>
+    <hr>
+    <footer><!--Se usa para definir elementos en el piede pagina.-->
+        <em>Pie de pagina</em>
+    </footer>
+
+    <hr>
+    <!--ELEMENTOS AUDIO Y VIDEO-->
+
+    <audio controls><!--Sirve para reproducir archivos de audio en una pagina web. El texto entre las etiquetas se mostrara en los exploradores que no soporten el elemnto.-->
+        <source src="Musica/audio.mp3" type="audio/mpeg"><!--Elemento que se usa cuando no se declara src en audio -->
+        <source src="Musica/audio.ogg" type="audio/ogg"><!--El explorador usara el rpimer tipo que pueda reconocer-->
+        El navegador No reconoce este tipo de audio
+    </audio>
+
+    <video controls><!--Sirve para reproducir archivos de audio en una pagina web. El texto entre las etiquetas se mostrara en los exploradores que no soporten el elemnto.-->
+        <source src="Videos/video.mp4" type="video/mp4"><!--Elemento que se usa cuando no se declara src en audio -->
+        <source src="Videos/video.ogg" type="video/ogg"><!--El explorador usara el rpimer tipo que pueda reconocer-->
+            El navegador No reconoce este tipo de video
+    </video>
+
+    <hr>
+    <!--BARRA DE PROGRESO-->
+
+    <progress  max="100" value="35"></progress><!--Crea una barra de progreso.-->
+
+    <!--API ALMACENAMIENTO WEB-->
+    <!--API GEOLOCALIZACION-->
+
+    <script src="scripts/script.js">
+        
+    </script>
+
+    <!--API DRAG AND DROP-->
+
+    <progress  max="100" value="35" draggable="true"></progress><!--un elemento aggarraable.-->
+
+    <hr>
+    
+    <!--SVG-->
+
+    <img src="Imagenes/girasol.svg" alt="" height="300"/><!--agregando una imagen tipo SVG-->
+
+    <svg width="1000" height="1000"><!--Genera un espacion donde ira un svg-->
+        <circle cx="80" cy="80" r="50" fill="green" stroke="5"><!--crea un circulo tip svg-->
+    </svg>
+
+    <svg width="1000" height="250">
+        <rect width="150" height="150" fill="orange" >
+        <animate attributeName="x" from="0" to="300" dur="3s" fill="freeze" repeatCount="2"/><!--Genera una animacion al atributo x con ciertas caracteristicas -->
+            </rect>
+    </svg>
+
+    <hr>
+    <!--CANVAS-->
+
+    <canvas id="canvas1" width="200" height="100"></canvas><!--etiqueta apra hacer figuras-->
+
+    <hr>
+    <!--FORM HTML5-->
+
+    <form autocomplete="off"><!--El navegador autocompletara o no los campos segun su cache-->
+        <label>Digite su correo</label>
+        <input type="text" name="Input" placeholder="correo@ejemplo.com" autofocus required><!--El forrmulario no será enviado si llena este campo-->
+        <input type="text" name="Input" list="colores"><!--tipo lista ligado al datlaist-->
+        <datalist id="colores"><!--Lista de datos ligada con su id al input de arriba-->
+            <option value="Rojo"></option><!--opcion-->
+            <option value="Verde"></option>
+            <option value="azul"></option>
+        </datalist>
+    </form>
+
+</body>
+</html>
