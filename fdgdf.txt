@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-Modificacion en master
-=======
-Modificacion en leo
->>>>>>> Leo
