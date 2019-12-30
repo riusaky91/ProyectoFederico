@@ -1,11 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Estudiantes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
+  <ion-list>
+    <ion-list-header>Estudiantes</ion-list-header>
+    <ion-item *ngFor="let estudiante of estudiantes">
+      {{estudiante.nombre}}
+    </ion-item>
+  </ion-list>
+
 </ion-content>

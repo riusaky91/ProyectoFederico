@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Login
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+  <ion-item>
+    <ion-label>Email:</ion-label>
+    <ion-input id="email" placeholder="name@correo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Password:</ion-label>
+    <ion-input id="password" placeholder="*****"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="registrar()">Registrar</ion-button>
+  </ion-item>
+
+</ion-content>
+
+
+
