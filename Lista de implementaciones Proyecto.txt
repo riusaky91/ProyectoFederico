@@ -1,3 +1,5 @@
 1. Template Tabs Basico
-2. Servicio de CRUD basico
-3. Servicio de Login Basico
+2. Servicio de CRUD basico. sin seguridad (Leer)
+3. Servicio de Login Basico. (registrar).
+4. Implementacion de Cordova.
+5. Primer deploy de APK en adroid.
