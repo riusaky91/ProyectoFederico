@@ -15,6 +15,8 @@ export class Tab3Page {
   email:any;
   password:any;
 
+  
+
 registrar(){
 
   this.email = document.getElementById("email");//tomo el email
