@@ -3,4 +3,4 @@
 3. Servicio de Login Basico. (registrar).
 4. Implementacion de Cordova.
 5. Primer deploy de APK en adroid.
-55
+6. Sin CRUD
