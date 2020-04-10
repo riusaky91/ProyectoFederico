@@ -3,17 +3,33 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Speakers</ion-title>
+    <ion-title text-center>Crear Proceso</ion-title>
+    <ion-button size="small" slot="end">Salir</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Speakers</ion-title>
+      <ion-title size="large">Crear Proceso</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <br><br>
+      <ion-item>
+      <ion-label>Elegir Tipo De Proceso</ion-label>
+      <ion-select interface="popover">
+        <ion-select-option value="Acta De Seguimiento">Acta De Seguimiento</ion-select-option>
+        <ion-select-option value="Primera Via">Primera Via</ion-select-option>
+        <ion-select-option value="Segunda Via">Segunda Via</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+  <section>
+    <ion-button expand="block">ACEPTAR</ion-button>
+  </section>
+
+  <!--
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" size-md="6" *ngFor="let speaker of speakers">
@@ -48,5 +64,5 @@
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid>-->
 </ion-content>
