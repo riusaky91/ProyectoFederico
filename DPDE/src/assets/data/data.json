@@ -404,6 +404,73 @@
     }
   ],
 
+  
+  "estudiantes": [
+    {
+      "id": "111",
+      "nombres": "Carlos Eduardo",
+      "apellidos": "Villagran Perez",
+      "foto": "/assets/img/speakers/bear.jpg",
+      "curso": "101",
+      "estado": "estudiando"
+    },
+    
+    {
+      "id": "112",
+      "nombres": "Pedro Tomas",
+      "apellidos": "Lopez Uran",
+      "foto": "/assets/img/speakers/turtle.jpg",
+      "curso": "201",
+      "estado": "estudiando"
+    },
+
+    {
+      "id": "113",
+      "nombres": "Luis Juan",
+      "apellidos": "Correa Tenor",
+      "foto": "/assets/img/speakers/rabbit.jpg",
+      "curso": "301",
+      "estado": "estudiando"
+    }
+  ],
+
+  "cursos": [
+    {
+      "id": "101-A",
+      "curso": "101",
+      "estudiantes": "25",
+      "director": "Alberto Guzman"
+    },
+    
+    {
+      "id": "201-A",
+      "curso": "201",
+      "estudiantes": "32",
+      "director": "Luis Posada"
+    },
+
+    {
+      "id": "301-A",
+      "curso": "301",
+      "estudiantes": "30",
+      "director": "Telesforo Carrillo"
+    },
+
+    {
+      "id": "401-A",
+      "curso": "401",
+      "estudiantes": "20",
+      "director": "Lucia Guzman"
+    },
+
+    {
+      "id": "501-A",
+      "curso": "501",
+      "estudiantes": "30",
+      "director": "Luisa Perez"
+    }
+  ],
+
   "map": [
     {
       "name": "Monona Terrace Convention Center",

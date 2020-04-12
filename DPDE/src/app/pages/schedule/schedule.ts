@@ -6,6 +6,13 @@ import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 
+/*Importando servicio de conexion a  de BD*/
+
+//Servicios
+
+import { ConexionService } from '../../services/conexion.service';
+
+
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html',
@@ -14,6 +21,30 @@ import { UserData } from '../../providers/user-data';
 export class SchedulePage implements OnInit {
   // Gets a reference to the list element
   @ViewChild('scheduleList', { static: true }) scheduleList: IonList;
+
+  users: any[] = [
+    {
+      id: 1,
+      first: 'Alice',
+      last: 'Smith',
+    },
+    {
+      id: 2,
+      first: 'Bob',
+      last: 'Davis',
+    },
+    {
+      id: 3,
+      first: 'Charlie',
+      last: 'Rosenburg',
+    }
+  ];
+
+  compareWithFn = (o1, o2) => {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  };
+
+  compareWith = this.compareWithFn;
 
   ios: boolean;
   dayIndex = 0;
@@ -24,6 +55,8 @@ export class SchedulePage implements OnInit {
   groups: any = [];
   confDate: string;
   showSearchbar: boolean;
+  cursos: any[] = [];
+  estudiantes: any;
 
   constructor(
     public alertCtrl: AlertController,
@@ -34,8 +67,27 @@ export class SchedulePage implements OnInit {
     public routerOutlet: IonRouterOutlet,
     public toastCtrl: ToastController,
     public user: UserData,
-    public config: Config
-  ) { }
+    public config: Config,
+    private conexion:ConexionService// Inyeccion servicio conexión
+  ) {
+
+    this.conexion.listaItem().subscribe(item=>{
+      this.estudiantes = item;
+      console.log(this.estudiantes);//prueba de verificacion de la coleccion traida
+    });
+   }
+
+  ionViewDidEnter() {
+    this.confData.getCursos().subscribe((cursos: any[]) => {
+      this.cursos = cursos;
+    });
+    /*
+    this.confData.getEstudiantes().subscribe((estudiantes: any[]) => {
+      this.estudiantes = estudiantes;
+    });*/
+  }
+
+  
 
   ngOnInit() {
     this.updateSchedule();

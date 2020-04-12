@@ -143,6 +143,22 @@ export class ConferenceData {
     );
   }
 
+  getCursos() {
+    return this.load().pipe(
+      map((data: any) => {
+        return data.cursos.sort();
+      })
+    );
+  }
+
+  getEstudiantes() {
+    return this.load().pipe(
+      map((data: any) => {
+        return data.estudiantes.sort();
+      })
+    );
+  }
+
   getTracks() {
     return this.load().pipe(
       map((data: any) => {
