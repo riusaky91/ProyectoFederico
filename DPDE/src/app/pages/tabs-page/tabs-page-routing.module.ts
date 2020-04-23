@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs-page';
-import { SchedulePage } from '../schedule/schedule';
+import { BuscarProcesoPage } from '../buscar-proceso/buscar-proceso';
 
 
 const routes: Routes = [
@@ -10,15 +10,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'schedule',
+        path: 'buscar-proceso',
         children: [
           {
             path: '',
-            component: SchedulePage,
+            component: BuscarProcesoPage,
           },
           {
             path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
+            loadChildren: () => import('../buscar-proceso-detalle/buscar-proceso-detalle.module').then(m => m.BuscarProcesoDetalleModule)
           }
         ]
       },
@@ -31,7 +31,7 @@ const routes: Routes = [
           },
           {
             path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
+            loadChildren: () => import('../buscar-proceso-detalle/buscar-proceso-detalle.module').then(m => m.BuscarProcesoDetalleModule)
           },
           {
             path: 'speaker-details/:speakerId',
@@ -59,7 +59,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/app/tabs/schedule',
+        redirectTo: '/app/tabs/buscar-proceso',
         pathMatch: 'full'
       }
     ]

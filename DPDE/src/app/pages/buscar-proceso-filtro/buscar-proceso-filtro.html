@@ -2,22 +2,22 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button *ngIf="ios" (click)="dismiss()">Cancel</ion-button>
-      <ion-button *ngIf="!ios" (click)="selectAll(false)">Reset</ion-button>
+      <ion-button *ngIf="!ios" (click)="selectAll(false)">Reiniciar</ion-button>
     </ion-buttons>
 
     <ion-title>
-      Filter Sessions
+      Filtrar por Tipo de Acta
     </ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="applyFilters()" strong>Done</ion-button>
+      <ion-button (click)="applyFilters()" strong>Aceptar</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list [lines]="ios ? 'inset' : 'full'">
-    <ion-list-header>Tracks</ion-list-header>
+    <ion-list-header>Filtros</ion-list-header>
 
     <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
       <ion-icon *ngIf="ios" slot="start" [name]="track.icon" color="medium"></ion-icon>
