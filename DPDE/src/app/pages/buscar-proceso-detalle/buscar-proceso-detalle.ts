@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { UserData } from '../../providers/user-data';
 
 @Component({
-  selector: 'page-session-detail',
-  styleUrls: ['./session-detail.scss'],
-  templateUrl: 'session-detail.html'
+  selector: 'buscar-proceso-detalle',
+  styleUrls: ['./buscar-proceso-detalle.scss'],
+  templateUrl: 'buscar-proceso-detalle.html'
 })
-export class SessionDetailPage {
+export class BuscarProcesoDetallePage {
   session: any;
   isFavorite = false;
   defaultHref = '';
