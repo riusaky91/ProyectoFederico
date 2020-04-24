@@ -1,3 +1,7 @@
+ion-toolbar {
+  
+  --background: center url(/assets/img/Background.png) no-repeat;
+}
 .login-logo {
   padding: 20px 0;
   min-height: 200px;
@@ -10,4 +14,28 @@
 
 .list {
   margin-bottom: 0;
+  
+}
+
+.bg-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+   background: center / cover url(/assets/img/Background.png) no-repeat;
+   
+}
+.button1 {
+  background: url(/assets/img/iconos/Acceder.png);
+  background-size: 100% 100%;
+  border: none;
+  padding: 25px 45px
+}
+
+.button2 {
+  background: url(/assets/img/iconos/Registro.png);
+  background-size: 100% 100%;
+  border: none;
+  padding: 23px 50px
 }

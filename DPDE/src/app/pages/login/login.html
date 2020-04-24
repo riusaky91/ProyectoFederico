@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons  slot="start">
     <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title text-center>ACCESO</ion-title>
@@ -8,12 +8,13 @@
   </ion-header> 
 
 <ion-content>
-  <div class="login-logo">
-    <ion-title text-center>INGRESA AL SISTEMA</ion-title>
-    <ion-title text-center>DPDE</ion-title>
-    <img src="assets/img/icon.svg" alt="Ionic logo">
-  </div>
- 
+  <div class="bg-image">
+
+    <p></p>
+       <ion-title text-center color="dark">INGRESA AL SISTEMA</ion-title>
+       <ion-title text-center>DPDE</ion-title>
+       <p></p><p>
+
   <form #loginForm="ngForm" novalidate>
     <ion-list>
       <ion-item>
@@ -42,14 +43,23 @@
       </ion-text>
     </ion-list>
 
+    <div>
+    <ion-item>
+      <ion-checkbox color="medium" checked slot="start"></ion-checkbox>
+      <ion-label>Recordar Usuario</ion-label>
+    </ion-item>
+    </div>
+    <p></p>
     <ion-row>
       <ion-col>
-        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Acceder</ion-button>
-      </ion-col>
+        <button class="button1" (click)="onLogin(loginForm)" type="submit" expand="block" ></button>
+        </ion-col>
       <ion-col>
-        <ion-button (click)="onSignup()" color="light" expand="block">Registrarse</ion-button>
+        <button class="button2" (click)="onSignup()" expand="block"></button>
       </ion-col>
     </ion-row>
   </form>
-  
+  <p></p><p></p><p></p>
+</div>
+
 </ion-content>
