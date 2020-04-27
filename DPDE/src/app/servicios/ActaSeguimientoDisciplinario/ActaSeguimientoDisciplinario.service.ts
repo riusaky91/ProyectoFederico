@@ -28,7 +28,15 @@ export class ActaSeguimientoDisciplinarioService {
     this.firestore.doc('ACTA_SEGUIMIENTO_DISCIPLINARIO/' + actaSeguimientoDisciplinario.id).update(actaSeguimientoDisciplinario);
   }
 
-  deleteActaSeguimientoDisciplinario(estudiantesId: number){
-    this.firestore.doc('ACTA_SEGUIMIENTO_DISCIPLINARIO/' + estudiantesId).delete();
+  deleteActaSeguimientoDisciplinario(actaSeguimientoDisciplinarioId: number){
+    this.firestore.doc('ACTA_SEGUIMIENTO_DISCIPLINARIO/' + actaSeguimientoDisciplinarioId).delete();
   }
+
+  //traer un acta con un id
+  getActaSeguimientoDisciplinarioConId(actaSeguimientoDisciplinarioId: number) {
+    
+  }
+
+
+  
 }

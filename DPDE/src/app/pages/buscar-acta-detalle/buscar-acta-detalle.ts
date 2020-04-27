@@ -4,26 +4,37 @@ import { ConferenceData } from '../../providers/conference-data';
 import { ActivatedRoute } from '@angular/router';
 import { UserData } from '../../providers/user-data';
 
+/*Importando servicios y entidades para conexion a BD*/
+
+import { ActaSeguimientoDisciplinarioService } from '../../servicios/ActaSeguimientoDisciplinario/actaSeguimientoDisciplinario.service';
+import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDisciplinario/ActaSeguimientoDisciplinario.model';
+
 @Component({
-  selector: 'buscar-proceso-detalle',
-  styleUrls: ['./buscar-proceso-detalle.scss'],
-  templateUrl: 'buscar-proceso-detalle.html'
+  selector: 'buscar-acta-detalle',
+  styleUrls: ['./buscar-acta-detalle.scss'],
+  templateUrl: 'buscar-acta-detalle.html'
 })
-export class BuscarProcesoDetallePage {
+export class BuscarActaDetallePage {
   session: any;
   isFavorite = false;
   defaultHref = '';
 
+
+  actasSeguimientoDisciplinario: ActaSeguimientoDisciplinario[];
+  acta : ActaSeguimientoDisciplinario;
+
   constructor(
     private dataProvider: ConferenceData,
     private userProvider: UserData,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private actaSeguimientoDisciplinarioService: ActaSeguimientoDisciplinarioService
   ) { }
 
   ionViewWillEnter() {
     this.dataProvider.load().subscribe((data: any) => {
       if (data && data.schedule && data.schedule[0] && data.schedule[0].groups) {
         const sessionId = this.route.snapshot.paramMap.get('sessionId');
+        
         for (const group of data.schedule[0].groups) {
           if (group && group.sessions) {
             for (const session of group.sessions) {
@@ -40,6 +51,34 @@ export class BuscarProcesoDetallePage {
           }
         }
       }
+    });
+
+    
+
+    this.readActaSeguimientoDisciplinario();
+
+    
+    
+
+  }
+
+  //Metodo a corregir lectura de entidad que busca le numero de acta del router link
+
+  readActaSeguimientoDisciplinario(){
+    this.actaSeguimientoDisciplinarioService.getActaSeguimientoDisciplinario().subscribe(data => {
+      this.actasSeguimientoDisciplinario = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as {}
+        } as unknown as ActaSeguimientoDisciplinario;
+      })
+      
+      const idEntrada = parseInt(this.route.snapshot.paramMap.get('actaId'));
+      this.actasSeguimientoDisciplinario.forEach(actaIt => {
+        if(actaIt.id == idEntrada){
+          this.acta = actaIt;
+        }  
+      });
     });
   }
 

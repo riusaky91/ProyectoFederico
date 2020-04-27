@@ -24,7 +24,10 @@ $categories: (
   workshop: #69bb7b,
   food: #3bc7c4,
   documentation: #b16be3,
-  navigation: #6600cc
+  navigation: #6600cc,
+  ac1: #fd8b2d,
+  ac2: #fe4c52,
+  ac3: #ac282b,
 );
 
 @each $track, $value in map-remove($categories) {

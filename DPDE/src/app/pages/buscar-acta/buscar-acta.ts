@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonList, IonRouterOutlet, LoadingController, ModalController, ToastController, Config } from '@ionic/angular';
 
-import { BuscarProcesoFiltroPage } from '../buscar-proceso-filtro/buscar-proceso-filtro';
+import { BuscarActaFiltroPage } from '../buscar-acta-filtro/buscar-acta-filtro';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 
@@ -20,13 +20,14 @@ import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDis
 
 
 @Component({
-  selector: 'buscar-proceso',
-  templateUrl: 'buscar-proceso.html',
-  styleUrls: ['./buscar-proceso.scss'],
+  selector: 'buscar-acta',
+  templateUrl: 'buscar-acta.html',
+  styleUrls: ['./buscar-acta.scss'],
 })
-export class BuscarProcesoPage implements OnInit {
+export class BuscarActaPage implements OnInit {
   // Gets a reference to the list element
   @ViewChild('scheduleList', { static: true }) scheduleList: IonList;
+  @ViewChild('actasSeguimientoDisciplinarioList', { static: true }) actasSeguimientoDisciplinarioList: IonList;
 
   users: any[] = [
     {
@@ -72,6 +73,7 @@ export class BuscarProcesoPage implements OnInit {
   
   actasSeguimientoDisciplinario: ActaSeguimientoDisciplinario[];
   actasSeguimientoDisciplinarioPorEstudiante: ActaSeguimientoDisciplinario[] = [];//variable que toma el filtro actas por estudiante
+  habilitarActas: boolean;//variable que habilita o deshabilitala lista de actas de Seguimiento
 
 
 
@@ -135,7 +137,10 @@ export class BuscarProcesoPage implements OnInit {
     });
     
     if(this.estudiantesPorCurso.length <= 0)
+    {
       this.habilitarEstudiates = true;
+      this.habilitarActas = true;
+    }
   }
 
   //Metodo que toma el valor del estudiante seleccionado y lista sus actas
@@ -143,8 +148,13 @@ export class BuscarProcesoPage implements OnInit {
     this.actasSeguimientoDisciplinarioPorEstudiante = [];
     this.actasSeguimientoDisciplinario.forEach(acta => {
       if($event.detail.value == acta.ID_ESTUDIANTE)
-        this.actasSeguimientoDisciplinarioPorEstudiante.push(acta);                         
+        this.actasSeguimientoDisciplinarioPorEstudiante.push(acta);
+      this.habilitarActas = false;                         
     });
+    
+    if(this.actasSeguimientoDisciplinarioPorEstudiante.length<=0)
+      this.habilitarActas = true;
+
     console.log(this.actasSeguimientoDisciplinarioPorEstudiante);
   }
 
@@ -219,6 +229,10 @@ export class BuscarProcesoPage implements OnInit {
       this.scheduleList.closeSlidingItems();
     }
 
+    if (this.actasSeguimientoDisciplinarioList) {
+      this.actasSeguimientoDisciplinarioList.closeSlidingItems();
+    }
+
     this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
       this.groups = data.groups;
@@ -227,7 +241,7 @@ export class BuscarProcesoPage implements OnInit {
 
   async presentFilter() {
     const modal = await this.modalCtrl.create({
-      component: BuscarProcesoFiltroPage,
+      component: BuscarActaFiltroPage,
       swipeToClose: true,
       presentingElement: this.routerOutlet.nativeEl,
       componentProps: { excludedTracks: this.excludeTracks }
@@ -240,6 +254,8 @@ export class BuscarProcesoPage implements OnInit {
       this.updateSchedule();
     }
   }
+
+  
 
   async addFavorite(slidingItem: HTMLIonItemSlidingElement, sessionData: any) {
     if (this.user.hasFavorite(sessionData.name)) {

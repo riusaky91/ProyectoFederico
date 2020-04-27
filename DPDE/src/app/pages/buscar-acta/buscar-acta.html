@@ -11,7 +11,7 @@
         Favorites
       </ion-segment-button>
     </ion-segment>
-    <ion-title *ngIf="!ios && !showSearchbar">Buscar Proceso</ion-title>
+    <ion-title *ngIf="!ios && !showSearchbar">Buscar Acta</ion-title>
     <ion-searchbar *ngIf="showSearchbar" showCancelButton="always" [(ngModel)]="queryText" (ionChange)="updateSchedule()" (ionCancel)="showSearchbar = false" placeholder="Search"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button *ngIf="!ios && !showSearchbar" (click)="showSearchbar = true">
@@ -25,6 +25,11 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <!--
+    ---------- Barra Favoritos y Todos 
+
+  
   <ion-toolbar *ngIf="!ios">
     <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
       <ion-segment-button value="all">
@@ -35,15 +40,16 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+  -->
 </ion-header>
 
 <ion-content fullscreen="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Buscar Acta</ion-title>
+      <ion-title size="large">Buscar Acta de Seguimiento</ion-title>
     </ion-toolbar>
     <ion-toolbar>
-      <ion-searchbar [(ngModel)]="queryText" (ionChange)="updateSchedule()" placeholder="Buscar"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="queryText" (ionChange)="updateSchedule()" placeholder="Buscar Acta de Seguimiento"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
   
@@ -65,6 +71,10 @@
   </ion-item>
 
 
+  <!--
+    -------- Lista de angular por defecto adicionales (favoritos, separadores) ----------
+
+  
 
   <ion-list #scheduleList [hidden]="shownSessions === 0">
     <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
@@ -77,7 +87,7 @@
       <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem [attr.track]="session.tracks[0] | lowercase"
         [hidden]="session.hide">
         
-        <ion-item routerLink="/app/tabs/buscar-proceso/session/{{session.id}}">
+        <ion-item routerLink="/app/tabs/buscar-acta/session/{{session.id}}">
           <ion-label>
             <h3>{{session.name}}</h3>
             
@@ -99,11 +109,12 @@
     </ion-item-group>
   </ion-list>
 
-  <ion-list #scheduleList [hidden]="shownSessions === 0">
-    <ion-item-group>
-    <ion-item-sliding *ngFor="let acta of actasSeguimientoDisciplinarioPorEstudiante" >
+  -->
 
-      <ion-item routerLink="/app/tabs/buscar-proceso/session/{{acta.id}}">
+  <ion-list #scheduleList>
+    <ion-item-group>
+    <ion-item-sliding *ngFor="let acta of actasSeguimientoDisciplinarioPorEstudiante" #slidingItem [attr.track]="acta.TIPO_ACTA | lowercase" [hidden] = habilitarActas>
+      <ion-item routerLink="/app/tabs/buscar-acta/acta/{{acta.id}}">
         <ion-label>
           <h3>{{acta.ID_MANUAL}} - {{acta.DESCARGOS_ESTUDIANTE}} - Tipo de Acta  - {{acta.TIPO_ACTA}}</h3>
           <p>
@@ -112,12 +123,8 @@
         </ion-label>
       </ion-item>
       <ion-item-options>
-        <ion-item-option color="favorite" (click)="addFavorite(slidingItem, acta)" *ngIf="segment === 'all'">
-          Favorite
-        </ion-item-option>
-        <ion-item-option color="danger" (click)="removeFavorite(slidingItem, acta, 'Remove Favorite')"
-          *ngIf="segment === 'favorites'">
-          Remove
+        <ion-item-option color="favorite"  >
+          Art. {{acta.ID_MANUAL}}
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
@@ -131,6 +138,7 @@
   <ion-list-header [hidden]="shownSessions > 0">
     No hay Favoritos seleccionados
   </ion-list-header>
+
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
     <ion-fab-button>
@@ -151,4 +159,6 @@
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
+
+
 </ion-content>

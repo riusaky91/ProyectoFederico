@@ -27,7 +27,7 @@ export class LoginPage {
 
     if (form.valid) {
       this.userData.login(this.login.username);
-      this.router.navigateByUrl('/app/tabs/buscar-proceso');
+      this.router.navigateByUrl('/app/tabs/buscar-acta');
     }
   }
 
