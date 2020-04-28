@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "ionic-ng-conf-app"
+  },
+  "targets": {
+    "dpde-90f22": {
+      "hosting": {
+        "app": [
+          "dpde-90f22"
+        ]
+      }
+    }
   }
 }

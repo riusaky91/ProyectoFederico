@@ -20,12 +20,12 @@ import { UserData } from './providers/user-data';
 export class AppComponent implements OnInit {
   appPages = [
     {
-      title: 'Buscar Estudiante',
-      url: '/app/tabs/schedule',
+      title: 'Buscar Acta',
+      url: '/app/tabs/buscar-acta',
       icon: 'calendar'
     },
     {
-      title: 'Crear Proceso',
+      title: 'Crear Acta',
       url: '/app/tabs/speakers',
       icon: 'people'
     },
@@ -117,7 +117,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
+      return this.router.navigateByUrl('/app/tabs/buscar-acta');
     });
   }
 

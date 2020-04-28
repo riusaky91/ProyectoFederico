@@ -16,6 +16,11 @@
 </ion-header>
 
 <ion-content>
+
+  <!--
+    --Deattales adicionales( trac)
+
+  
   <div *ngIf="session" class="ion-padding">
     <h1>{{session.name}}</h1>
     <span *ngFor="let track of session?.tracks" [class]="'session-track-'+track.toLowerCase()">{{track}}</span>
@@ -25,7 +30,20 @@
       <br /> {{session.location}}
     </ion-text>
   </div>
+  -->
+  
+  <div *ngIf="acta" class="ion-padding">
+    <h1>{{acta.TIPO_ACTA}}</h1>
+    
+    <p>{{acta.DESCARGOS_ESTUDIANTE}}</p>
+    <ion-text color="medium">
+      {{acta.FECHA_CREACION}} &ndash; {{acta.FECHA_MODIFICACION}}
+      <br /> {{acta.COMPROMISO_ESTUDIANTE}}
+    </ion-text>
+  </div>
 
+
+  <!--Lista adiocioanles
   <ion-list>
     <ion-item (click)="sessionClick('watch')" button>
       <ion-label color="primary">Watch</ion-label>
@@ -44,4 +62,6 @@
       <ion-label color="primary">Leave Feedback</ion-label>
     </ion-item>
   </ion-list>
+
+  -->
 </ion-content>

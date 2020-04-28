@@ -7,8 +7,8 @@ import { TabsPageRoutingModule } from './tabs-page-routing.module';
 
 import { AboutModule } from '../about/about.module';
 import { MapModule } from '../map/map.module';
-import { ScheduleModule } from '../schedule/schedule.module';
-import { SessionDetailModule } from '../session-detail/session-detail.module';
+import { BuscarActaModule } from '../buscar-acta/buscar-acta.module';
+import { BuscarActaDetalleModule } from '../buscar-acta-detalle/buscar-acta-detalle.module';
 import { SpeakerDetailModule } from '../speaker-detail/speaker-detail.module';
 import { SpeakerListModule } from '../speaker-list/speaker-list.module';
 
@@ -18,8 +18,8 @@ import { SpeakerListModule } from '../speaker-list/speaker-list.module';
     CommonModule,
     IonicModule,
     MapModule,
-    ScheduleModule,
-    SessionDetailModule,
+    BuscarActaModule,
+    BuscarActaDetalleModule,
     SpeakerDetailModule,
     SpeakerListModule,
     TabsPageRoutingModule
