@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="bg-image">
     <ion-toolbar>
     <ion-buttons  slot="start">
     <ion-menu-button></ion-menu-button>
@@ -19,7 +19,7 @@
     <ion-list>
       <ion-item>
         <ion-label position="stacked" color="primary">USUARIO</ion-label>
-        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+        <ion-input class="textbox" [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
           required>
         </ion-input>
       </ion-item>
