@@ -416,3 +416,32 @@
 
   --ion-tab-bar-background: #1f1f1f;
 }
+
+ion-content {
+  --background: center / cover url('../assets/img/Background.png');
+  --ion-border-color: #222222
+}
+
+ion-item {
+  --ion-background-color: rgba(0, 0, 0, 0);  
+}
+
+ion-list {
+  --ion-background-color: rgba(0, 0, 0, 0);
+;
+  
+}
+
+ion-header {
+  --ion-background-color: rgba(0, 0, 0, 0);  
+}
+
+.centrar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
