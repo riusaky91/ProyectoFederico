@@ -1,7 +1,7 @@
 {
-  "name": "ionic-conference-app",
+  "name": "debido-proceso-app",
   "version": "0.0.0",
-  "description": "Ionic Conference App",
+  "description": "Debido Proceso Disciplinario Escola",
   "author": "Ionic Team <hi@ionicframework.com>",
   "license": "Apache-2.0",
   "scripts": {
@@ -94,7 +94,9 @@
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
       "cordova-plugin-statusbar": {},
       "cordova-plugin-ionic-keyboard": {}
     }
