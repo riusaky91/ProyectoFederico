@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Crear Acta',
-      url: '/app/tabs/speakers',
+      url: '/app/tabs/crear-acta',
       icon: 'people'
     },
     {

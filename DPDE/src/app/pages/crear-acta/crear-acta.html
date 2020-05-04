@@ -4,7 +4,6 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title text-center>Crear Acta</ion-title>
-    <ion-button size="small" slot="end">Salir</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -15,27 +14,27 @@
     </ion-toolbar>
   </ion-header>
 
-  <br><br>
-      <ion-item>
+  <div class="centrar">
+    <ion-item>
       <ion-label>Elegir Tipo De Acta</ion-label>
-      <ion-select interface="popover">
-        <ion-select-option value="Acta De Seguimiento">Acta De Seguimiento</ion-select-option>
-        <ion-select-option value="Primera Via">Primera Via</ion-select-option>
-        <ion-select-option value="Segunda Via">Segunda Via</ion-select-option>
+      <ion-select (ionChange)="onChangeActas($event)" ok-text="Aceptar" cancel-text="Cancelar">
+        <ion-select-option value=1 >Acta De Seguimiento</ion-select-option>
+        <ion-select-option value=2 >Primera Via</ion-select-option>
+        <ion-select-option value=3 >Segunda Via</ion-select-option>
       </ion-select>
     </ion-item>
-    
-  <section>
-    <ion-button expand="block">ACEPTAR</ion-button>
-  </section>
+      
+    <section>
+      <ion-button routerLink="/app/tabs/crear-acta/crear-acta-detalle/{{tipoActa}}">Crear Acta</ion-button>
+    </section>
+  </div>
 
-  <!--
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" size-md="6" *ngFor="let speaker of speakers">
         <ion-card class="speaker-card">
           <ion-card-header>
-            <ion-item detail="false" lines="none" class="speaker-item" routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}">
+            <ion-item detail="false" lines="none" class="speaker-item" routerLink="/app/tabs/crear-acta/crear-acta-detalle/{{speaker.id}}">
               <ion-avatar slot="start">
                 <img [src]="speaker.profilePic" [alt]="speaker.name + ' profile picture'">
               </ion-avatar>
@@ -48,13 +47,13 @@
 
           <ion-card-content>
             <ion-list lines="none">
-              <ion-item *ngFor="let session of speaker.sessions" detail="false" routerLink="/app/tabs/speakers/session/{{session.id}}">
+              <ion-item *ngFor="let session of speaker.sessions" detail="false" routerLink="/app/tabs/crear-acta/crear-acta-detalle/{{session.id}}">
                 <ion-label>
                   <h3>{{session.name}}</h3>
                 </ion-label>
               </ion-item>
 
-              <ion-item detail="false" routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}">
+              <ion-item detail="false" routerLink="/app/tabs/crear-acta/crear-acta-detalle/{{speaker.id}}">
                 <ion-label>
                   <h3>About {{speaker.name}}</h3>
                 </ion-label>
@@ -64,5 +63,5 @@
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid>-->
+  </ion-grid>
 </ion-content>

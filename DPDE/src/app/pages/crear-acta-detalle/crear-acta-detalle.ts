@@ -5,12 +5,14 @@ import { ActionSheetController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
-  selector: 'page-speaker-detail',
-  templateUrl: 'speaker-detail.html',
-  styleUrls: ['./speaker-detail.scss'],
+  selector: 'crear-acta-detalle',
+  templateUrl: 'crear-acta-detalle.html',
+  styleUrls: ['./crear-acta-detalle.scss'],
 })
-export class SpeakerDetailPage {
+export class CrearActaDetallePage {
   speaker: any;
+
+  tipoActa: number;//Variable que contiene el tipo de acta seleccionada
 
   constructor(
     private dataProvider: ConferenceData,
@@ -22,16 +24,20 @@ export class SpeakerDetailPage {
 
   ionViewWillEnter() {
     this.dataProvider.load().subscribe((data: any) => {
-      const speakerId = this.route.snapshot.paramMap.get('speakerId');
+      const speakerId = this.route.snapshot.paramMap.get('actaId');
+      
       if (data && data.speakers) {
         for (const speaker of data.speakers) {
           if (speaker && speaker.id === speakerId) {
             this.speaker = speaker;
             break;
           }
-        }
+        }      
       }
     });
+    const acta = this.route.snapshot.paramMap.get('actaId');
+    this.tipoActa = parseInt(acta);
+    console.log(this.tipoActa);
   }
 
   openExternalUrl(url: string) {

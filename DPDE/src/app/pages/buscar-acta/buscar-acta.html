@@ -1,6 +1,6 @@
 
   
-  <ion-header translucent="true" class="fondo">
+  <ion-header class="fondo">
     <ion-toolbar>
       <ion-buttons *ngIf="!showSearchbar" slot="start">
         <ion-menu-button></ion-menu-button>
@@ -55,7 +55,7 @@
       </ion-toolbar>
     </ion-header>
     
-
+    <div class ="centrarBusqueda">
     <ion-item *ngIf="segment === 'all'">
       <ion-label>Cursos</ion-label>
       <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar">
@@ -71,7 +71,7 @@
         </ion-select-option>
       </ion-select>
     </ion-item>
-
+  
 
     <!--
       -------- Lista de angular por defecto adicionales (favoritos, separadores) ----------
@@ -133,7 +133,7 @@
     </ion-item-group>
     </ion-list>
 
-
+  </div>
 
 
     <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>

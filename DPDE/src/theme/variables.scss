@@ -428,12 +428,20 @@ ion-item {
 
 ion-list {
   --ion-background-color: rgba(0, 0, 0, 0);
-;
-  
 }
 
 ion-header {
-  --ion-background-color: rgba(0, 0, 0, 0);  
+  --ion-background-color: rgba(0, 0, 0, 0); 
+}
+
+ion-tab-bar {
+  --ion-background-color: rgba(143, 37, 37, 0); 
+}
+
+ion-menu {
+  --background: center / cover url('../assets/img/FondoMenu.png');  
+  --ion-background-color: rgba(0, 0, 0, 0);
+  --ion-text-color: #dbdbdb; 
 }
 
 .centrar{

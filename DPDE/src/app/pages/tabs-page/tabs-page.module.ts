@@ -9,8 +9,8 @@ import { AboutModule } from '../about/about.module';
 import { MapModule } from '../map/map.module';
 import { BuscarActaModule } from '../buscar-acta/buscar-acta.module';
 import { BuscarActaDetalleModule } from '../buscar-acta-detalle/buscar-acta-detalle.module';
-import { SpeakerDetailModule } from '../speaker-detail/speaker-detail.module';
-import { SpeakerListModule } from '../speaker-list/speaker-list.module';
+import { CrearActaDetalleModule } from '../crear-acta-detalle/crear-acta-detalle.module';
+import { CrearActaModule } from '../crear-acta/crear-acta.module';
 
 @NgModule({
   imports: [
@@ -20,8 +20,8 @@ import { SpeakerListModule } from '../speaker-list/speaker-list.module';
     MapModule,
     BuscarActaModule,
     BuscarActaDetalleModule,
-    SpeakerDetailModule,
-    SpeakerListModule,
+    CrearActaDetalleModule,
+    CrearActaModule,
     TabsPageRoutingModule
   ],
   declarations: [

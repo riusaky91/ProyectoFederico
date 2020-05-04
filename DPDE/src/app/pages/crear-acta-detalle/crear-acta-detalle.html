@@ -17,12 +17,14 @@
 
   <div class="speaker-background">
     <img [src]="speaker?.profilePic" [alt]="speaker?.name">
-    <h2>{{speaker?.name}}</h2>
+    <hr>
+    <h2 *ngIf="tipoActa == 1">Crear Acta de Seguimiento</h2>
+    <h2 *ngIf="tipoActa == 2">Crear Acta Primera Via</h2>
+    <h2 *ngIf="tipoActa == 3">Crear Acta Segunda Via</h2>
   </div>
 
   <div class="ion-padding speaker-detail">
     <p>{{speaker?.about}} Say hello on social media!</p>
-
     <hr>
 
     <ion-chip color="twitter" button (click)="openExternalUrl('https://twitter.com/' + speaker.twitter)">

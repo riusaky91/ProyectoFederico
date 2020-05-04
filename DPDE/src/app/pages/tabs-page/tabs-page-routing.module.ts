@@ -23,19 +23,19 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'speakers',
+        path: 'crear-acta',
         children: [
           {
             path: '',
-            loadChildren: () => import('../speaker-list/speaker-list.module').then(m => m.SpeakerListModule)
+            loadChildren: () => import('../crear-acta/crear-acta.module').then(m => m.CrearActaModule)
           },
           {
             path: 'session/:sessionId',
             loadChildren: () => import('../buscar-acta-detalle/buscar-acta-detalle.module').then(m => m.BuscarActaDetalleModule)
           },
           {
-            path: 'speaker-details/:speakerId',
-            loadChildren: () => import('../speaker-detail/speaker-detail.module').then(m => m.SpeakerDetailModule)
+            path: 'crear-acta-detalle/:actaId',
+            loadChildren: () => import('../crear-acta-detalle/crear-acta-detalle.module').then(m => m.CrearActaDetalleModule)
           }
         ]
       },
