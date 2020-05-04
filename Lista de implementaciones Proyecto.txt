@@ -3,4 +3,8 @@
 3. Servicio de Login Basico. (registrar).
 4. Implementacion de Cordova.
 5. Primer deploy de APK en adroid.
+<<<<<<< HEAD
 6. Sin CRUD
+=======
+6. Hola mundo
+>>>>>>> bf5b1b2c65889c59ecf1c4af14feb7abf5b7e3ba
