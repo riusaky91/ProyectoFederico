@@ -31,13 +31,8 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Observador',
-      url: '/app/tabs/map',
-      icon: 'book'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
+      url: '/app/tabs/observador',
+      icon: 'map'
     }
   ];
   loggedIn = false;
