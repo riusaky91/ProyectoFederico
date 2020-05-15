@@ -435,7 +435,7 @@ ion-header {
 }
 
 ion-tab-bar {
-  --ion-background-color: rgba(143, 37, 37, 0); 
+  --ion-background-color: rgba(0, 0, 0, 0); 
 }
 
 ion-menu {
@@ -449,6 +449,11 @@ ion-menu {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.centrarBusqueda{
+
+  padding: 50px;
 }
 
 

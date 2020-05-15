@@ -30,21 +30,17 @@ const routes: Routes = [
             loadChildren: () => import('../crear-acta/crear-acta.module').then(m => m.CrearActaModule)
           },
           {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../buscar-acta-detalle/buscar-acta-detalle.module').then(m => m.BuscarActaDetalleModule)
-          },
-          {
-            path: 'crear-acta-detalle/:actaId',
-            loadChildren: () => import('../crear-acta-detalle/crear-acta-detalle.module').then(m => m.CrearActaDetalleModule)
+            path: 'crear-acta-registro/:actaId',
+            loadChildren: () => import('../crear-acta-registro/crear-acta-registro.module').then(m => m.CrearActaRegistroModule)
           }
         ]
       },
       {
-        path: 'map',
+        path: 'observador',
         children: [
           {
             path: '',
-            loadChildren: () => import('../map/map.module').then(m => m.MapModule)
+            loadChildren: () => import('../obsevador/observador.module').then(m => m.ObservadorModule)
           }
         ]
       },

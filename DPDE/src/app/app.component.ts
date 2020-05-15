@@ -31,13 +31,8 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Observador',
-      url: '/app/tabs/map',
+      url: '/app/tabs/observador',
       icon: 'map'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
     }
   ];
   loggedIn = false;
@@ -117,7 +112,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/buscar-acta');
+      return this.router.navigateByUrl('/login');
     });
   }
 

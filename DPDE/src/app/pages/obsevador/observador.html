@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Observador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class ="centrarBusqueda">
+    <ion-item >
+      <ion-label>Curso</ion-label>
+      <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Curso">
+        <ion-select-option *ngFor="let curso of cursos">{{curso.curso}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>Estudiante</ion-label>
+      <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" placeholder="Seleccione el Estudiante">
+        <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" 
+        value="{{estudiante.id}},
+        {{estudiante.nombres}},
+        {{estudiante.apellidos}},
+        {{estudiante.edad}},
+        {{estudiante.curso}}">        
+            {{estudiante.nombres+ ' '+ estudiante.apellidos}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div *ngIf= "estudianteElegido" >
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          {{datosEstudiante[2]}}<br>
+          {{datosEstudiante[1]}}<br>
+          Curso: {{datosEstudiante[4]}} <br>
+          Edad: {{datosEstudiante[3]}} <br>
+          Jornada: Mañana
+          <section>
+            <ion-button expand="block">Ver</ion-button>
+          </section>
+        
+          <section>
+            <ion-button expand="block">Generar PDF</ion-button>
+          </section>
+        </ion-label>
+      </ion-item>
+    </div>
+    
+  </div>
+</ion-content>
