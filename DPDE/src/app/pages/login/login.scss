@@ -5,10 +5,28 @@
 }
 
 .login-logo img {
-  max-width: 150px;
+  max-width: 100px;
 }
 
 .list {
   margin-bottom: 0;
 }
 
+.button1 {
+  color: white;
+  background: url(/assets/img/iconos/ACCEDERR.png);
+  text-transform: uppercase;
+  background-size: 100% 100%;
+  border: none;
+  padding: 15px 30px;
+  
+}
+
+.input{
+  background: url(/assets/img/iconoslogin/Input1.svg);
+  text-transform: uppercase;
+  background-size: 100% 100%;
+  border: none;
+  padding: 15px 30px;
+}
+    

@@ -246,9 +246,8 @@
  * iOS only CSS variables can go here
  */
 
-.ios {
 
-}
+
 
 /*
  * App Material Design Variables
@@ -256,9 +255,7 @@
  * Material Design only CSS variables can go here
  */
 
-.md {
 
-}
 
 /*
  * App Theme
@@ -418,7 +415,7 @@
 }
 
 ion-content {
-  --background: center / cover url('../assets/img/Background.png');
+  --background: center / cover url(/assets/img/Background.png);
   --ion-border-color: #222222
 }
 
@@ -435,7 +432,7 @@ ion-header {
 }
 
 ion-tab-bar {
-  --ion-background-color: rgba(143, 37, 37, 0); 
+  --ion-background-color: rgba(0, 0, 0, 0); 
 }
 
 ion-menu {
@@ -450,6 +447,14 @@ ion-menu {
   justify-content: center;
   flex-direction: column;
 }
+ion-menu-button{
+  
+  background: url(/assets/img/iconos/Menu3.png);
+  background-size: 95% 88%;
+  
+}
 
-
-
+ion-toolbar {
+  --background: center / cover url(/assets/img/Background.png);
+  --ion-border-color: #222222
+}

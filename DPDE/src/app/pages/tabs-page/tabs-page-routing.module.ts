@@ -26,7 +26,7 @@ const routes: Routes = [
         path: 'crear-acta',
         children: [
           {
-            path: '',
+            path: 'crear/:crearId',
             loadChildren: () => import('../crear-acta/crear-acta.module').then(m => m.CrearActaModule)
           },
           {

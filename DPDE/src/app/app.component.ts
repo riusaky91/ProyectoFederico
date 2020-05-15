@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Observador',
       url: '/app/tabs/map',
-      icon: 'map'
+      icon: 'book'
     },
     {
       title: 'About',
@@ -117,7 +117,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/buscar-acta');
+      return this.router.navigateByUrl('/login');
     });
   }
 
