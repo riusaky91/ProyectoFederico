@@ -5,4 +5,5 @@ export class Estudiantes {
     foto: string;
     estado: string;
     curso: number;
+    edad: number;
 }
