@@ -18,22 +18,23 @@ import { UserData } from './providers/user-data';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  appPages = [
-    {
-      title: 'Buscar Acta',
-      url: '/app/tabs/buscar-acta',
-      icon: 'calendar'
-    },
-    {
-      title: 'Crear Acta',
-      url: '/app/tabs/crear-acta',
-      icon: 'people'
-    },
-    {
-      title: 'Observador',
-      url: '/app/tabs/observador',
-      icon: 'map'
-    }
+     appPages = [
+      {
+        title: 'Buscar Acta',
+        url: '/app/tabs/buscar-acta',
+        icono: '/assets/img/iconos/BuscarProceso.png'
+      },
+      {
+        title: 'Crear Acta',
+        url: '/app/tabs/crear-acta',
+        icono: '/assets/img/iconos/Crear.png'
+      },
+      {
+        title: 'Observador',
+        url: '/app/tabs/observador',
+        icono: '/assets/img/iconos/Observador.png'
+      }
+    
   ];
   loggedIn = false;
   dark = false;

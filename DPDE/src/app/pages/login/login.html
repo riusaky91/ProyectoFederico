@@ -3,7 +3,7 @@
     <ion-buttons >
    <!--  <ion-menu-button></ion-menu-button>-->
     </ion-buttons>
-    <ion-title text-center>ACCESO</ion-title>
+    <ion-title text-center>Acceso</ion-title>
   </ion-toolbar>
 </ion-header> 
 
@@ -21,23 +21,23 @@
         <ion-label position="stacked" color="dark">USUARIO</ion-label>
         <ion-input class="input" [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
         required>
+        </ion-input>
         <ion-text color="danger">
           <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
             Se requiere el ususario 
           </p>
         </ion-text>
-        </ion-input>
       </ion-item>
 
       <ion-item >
         <ion-label position="stacked" color="dark">CONTRASEÑA</ion-label>
         <ion-input class="input" [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
-          <ion-text color="danger">
-            <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
-              Se requiere la contraseña
-            </p>
-          </ion-text>
         </ion-input>
+        <ion-text color="danger">
+          <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+            Se requiere la contraseña
+          </p>
+        </ion-text>
       </ion-item>   
     </ion-list>
 
@@ -56,10 +56,10 @@
         <button class="button1" (click)="onSignup()" expand="block">REGISTRO</button>
       </ion-col>
     </ion-row>
-
-    <ion-button fill="dark" (click)="onSignup()">¿Olvidaste Tu Contraseña?</ion-button>
-
-  </form>
+    <div>
+        <ion-label class="label" (click)="onSignup()" >¿Olvidaste Tu Contraseña?</ion-label>
+      </div>   
+      </form>
 </div>
 </ion-content>
 
