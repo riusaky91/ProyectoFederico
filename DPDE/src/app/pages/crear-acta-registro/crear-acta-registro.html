@@ -4,16 +4,17 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/app/tabs/crear-acta"></ion-back-button>
       </ion-buttons>
+      <ion-title *ngIf="tipoActa == 1">Crear Acta de Seguimiento</ion-title>
+      <ion-title *ngIf="tipoActa == 2">Crear Acta Primera Via</ion-title>
+      <ion-title *ngIf="tipoActa == 3">Crear Acta Segunda Via</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class ="centrarBusqueda">
-    <h4 *ngIf="tipoActa == 1">Crear Acta de Seguimiento</h4>
-    <h3 *ngIf="tipoActa == 2">Crear Acta Primera Via</h3>
-    <h3 *ngIf="tipoActa == 3">Crear Acta Segunda Via</h3>
+
+    
 
     <h3>CREAR</h3>
-
+    
     <ion-item >
       <ion-label>Curso</ion-label>
       <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Curso">
@@ -22,17 +23,17 @@
     </ion-item>
 
     <ion-item >
-      <ion-label>Estudiante</ion-label>
+      <ion-label>Nombre Estudiante</ion-label>
       <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" placeholder="Seleccione el Estudiante">
         <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" value="{{estudiante.id}},{{estudiante.nombres}},{{estudiante.apellidos}},{{estudiante.edad}}">        
             {{estudiante.nombres+ ' '+ estudiante.apellidos}}
         </ion-select-option>
       </ion-select>
     </ion-item>
-  </div>
 
-    
-<div *ngIf= "estudianteElegido" class ="centrarBusqueda">
+
+<!--TIPOS DE ACTAS-->  
+<div *ngIf= "estudianteElegido">
 
   <ion-item>
     <ion-label class="ion-text-wrap">
@@ -46,77 +47,136 @@
     </ion-label>
   </ion-item>
 
-  <ion-item>
-    <ion-label>Fecha</ion-label>
-    <ion-datetime  placeholder="Seleccione la Fecha" ok-text="Aceptar" cancel-text="Cancelar"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label>Hora</ion-label>
-    <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="Seleccione la Hora" ok-text="Aceptar" cancel-text="Cancelar"></ion-datetime>
-  </ion-item>
+  <!--FORMULARIO PARA LOS TIPOS DE ACTAS-->  
+  <form #formularioActa="ngForm" (ngSubmit)="generar()">
 
+    <ion-list>
 
-  <ion-item>
-    <ion-label>Presunta falta disciplinaria cometida </ion-label>
-    <ion-select ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione la Falta">
-      <ion-select-option value=1 >1521 - Porte Inadecuado uniforme</ion-select-option>
-      <ion-select-option value=2 >1522 - Llegada Tarde</ion-select-option>
-      <ion-select-option value=3 >1523 - Comer en Clase</ion-select-option>
-    </ion-select>
-  </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          Fecha y Hora en que ocurrieron los hechos:
+        </ion-label>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-datetime  placeholder="Seleccione la Fecha" ok-text="Aceptar" cancel-text="Cancelar" [(ngModel)]="acta.fecha" name="fecha" required></ion-datetime>
+      </ion-item>
 
-  <ion-item *ngIf="tipoActa == 2 || tipoActa == 3">
-    <ion-label position="stacked">Observaciones del Docente</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+      <ion-item>
+        <ion-label>Hora</ion-label>
+        <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="Seleccione la Hora" ok-text="Aceptar" cancel-text="Cancelar" [(ngModel)]="acta.hora" name="hora" required></ion-datetime>
+      </ion-item>
 
+      <ion-item>
+        <ion-label>Presunta falta disciplinaria cometida </ion-label>
+        <ion-select ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione la Falta" [(ngModel)]="acta.falta" name="falta" required>
+          <ion-select-option value=1 >1521 - Porte Inadecuado uniforme</ion-select-option>
+          <ion-select-option value=2 >1522 - Llegada Tarde</ion-select-option>
+          <ion-select-option value=3 >1523 - Comer en Clase</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Descargos del Estudiante</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descargos del Estudiante</ion-label>
+        <ion-textarea type="text"
+                      [(ngModel)]="acta.descargosEstudiante" 
+                      name="descargosEstudiante"
+                      autocapitalize="words"
+                      maxlength=30
+                      required ></ion-textarea>
+      </ion-item>
 
-  <ion-item *ngIf="tipoActa == 2">
-    <ion-label position="stacked">Compromiso del Estudiante</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+      <ion-item *ngIf="tipoActa == 2 || tipoActa == 3">
+        <ion-label position="floating">Observaciones del Docente</ion-label>
+        <ion-textarea type="text"
+                      [(ngModel)]="acta.observacionesDocente" 
+                      name="observacionesDocente"
+                      autocapitalize="words"
+                      maxlength=30
+                      required ></ion-textarea>
+      </ion-item>
 
-  <ion-item *ngIf="tipoActa == 3">
-    <ion-label>Seleccionar Sanción </ion-label>
-    <ion-select ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione la Falta">
-      <ion-select-option value=1 >1 Semana</ion-select-option>
-      <ion-select-option value=2 >2 Semanas</ion-select-option>
-      <ion-select-option value=3 >3 Semanas</ion-select-option>
-    </ion-select>
-  </ion-item>
+      <ion-item *ngIf="tipoActa == 1 || tipoActa == 2">
+        <ion-label position="floating">Compromiso del Estudiante</ion-label>
+        <ion-textarea type="text"
+                      [(ngModel)]="acta.compromisoEstudiante" 
+                      name="compromisoEstudiante"
+                      autocapitalize="words"
+                      maxlength=30
+                      required ></ion-textarea>
+      </ion-item>
+    
+      <ion-item *ngIf="tipoActa == 3">
+        <ion-label>
+          Sanción 200 años 
+        </ion-label>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Firma del Estudiante</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          Nombre Estudiante: {{datosEstudiante[1]}} {{datosEstudiante[2]}}
+        </ion-label>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Firma del Docente</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Firma del Estudiante</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          Nombre Docente: Catarino jovial
+        </ion-label>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="stacked">Firma del Docente</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
 
-  <ion-item *ngIf="tipoActa == 2 || tipoActa == 3">
-    <ion-label position="stacked">Firma del Acudiente</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+      <ion-list *ngIf="tipoActa == 2 || tipoActa == 3">
+        
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            Nombre Acudiente: Pedrito el Bailarin
+          </ion-label>
+        </ion-item>  
 
-  <ion-item *ngIf="tipoActa == 3">
-    <ion-label position="stacked">Firma del Coordinador</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+        <ion-item >
+          <ion-label position="stacked">Firma del Acudiente</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+      </ion-list>
+    
+      <ion-list *ngIf="tipoActa == 3">
+        
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            Nombre Coordinador: Carmelo Valencia
+          </ion-label>
+        </ion-item>  
 
-  <section>
-    <ion-button expand="block">Generar</ion-button>
-  </section>
+        <ion-item >
+          <ion-label position="stacked">Firma del Coordinador</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+      </ion-list>
 
-  <section>
-    <ion-button expand="block">Limpiar</ion-button>
-  </section>
+      <ion-item>
+        <ion-label>Formulario template valido : {{formularioActa.valid}}</ion-label>
+      </ion-item>
+      
+    </ion-list>
+  
+    <ion-button expand="full" type="submit" [disabled]="formularioActa.invalid" (click)="generar()">
+      Generar
+    </ion-button>
+    <ion-button expand="full" (click)="limpiar(formularioActa)">
+      Limpiar
+    </ion-button>
+  </form>
+
 </div>
 
 </ion-content>

@@ -27,61 +27,48 @@ export class ObservadorPage implements AfterViewInit {
   estudianteElegido: boolean = false;//si se eligio un estudiante
 
   cursos: Cursos[];
+
+  lapsos : any = ["Todos","2020","2019","2018","2017","2016","2015"];
+
+  envio: string;
   
 
   constructor(
       //Inyeccion servicios de conexion para cada entidad
       private cursosservice: CursosService,
       private estudiantesservice: EstudiantesService
-    ) {}
+    ) { }
 
   async ngAfterViewInit() {
-    this.readCursos();
+
+    this.traerCursos();
     this.readEstudiantes();
   }
 
   //CRUD de Entidad -- cursos -- utilizando el servicio 'cursosservice'
 
-  readCursos(){
-    this.cursosservice.getCursos().subscribe(data => {
-      this.cursos = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}
-        } as unknown as Cursos;
+  traerCursos() {
+    this.cursosservice.getCursosList().valueChanges().subscribe(cursos => {
+        this.cursos = cursos
+        console.log(this.cursos);
       })
-    });
-  }
-  createCurso(cursos: Cursos){
-    this.cursosservice.createCursos(cursos);
-  }
-
-  updateCurso(cursos: Cursos) {
-    this.cursosservice.updateCursos(cursos);
-  }
-
-  deleteCurso(id: number) {
-    this.cursosservice.deleteCursos(id);
-  }
+    }
+    
 
   //CRUD de Entidad -- estudiantes -- utilizando el servicio 'estudiantesservice'
 
   readEstudiantes(){
-    this.estudiantesservice.getEstudiantes().subscribe(data => {
-      this.estudiantes = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}         
-        } as unknown as Estudiantes;
-      })
-    });    
+    this.estudiantesservice.getEstudiantesList().valueChanges().subscribe(estudiantes => {
+      this.estudiantes =estudiantes;
+      console.log(this.estudiantes);
+    })   
   }
 
   //Metodo que toma el valor del curso seleccionado y lista sus estudiantes
   onChangeCursos($event){   
     this.estudiantesPorCurso = [];
     this.estudiantes.forEach(estudiante => {
-      if(estudiante.curso == $event.detail.value)        
+      if(estudiante.IDCURSO == $event.detail.value)        
         this.estudiantesPorCurso.push(estudiante);
       this.habilitarEstudiates = false;  
     });
@@ -92,12 +79,19 @@ export class ObservadorPage implements AfterViewInit {
     }
   }
 
+  //Metodo que toma el valor del estudiante seleccionado y guarda su valor en el arreglo datosEstudiante
   onChangeEstudiantes($event){   
     this.estudianteElegido = true;
     this.datosEstudiante = $event.detail.value.split(',');
     console.log(this.datosEstudiante);
   }
 
+  //Metodo que toma el año seleccionado y el id del estudiante y los envia en un string al observador detalle
+  onChangeLapso($event){     
+
+    this.envio = this.datosEstudiante[0] + "-" + $event.detail.value
+    console.log(this.envio);
+  }
   
 }
 

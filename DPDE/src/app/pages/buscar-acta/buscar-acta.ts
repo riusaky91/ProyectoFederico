@@ -131,7 +131,7 @@ export class BuscarActaPage implements OnInit {
   onChangeCursos($event){   
     this.estudiantesPorCurso = [];
     this.estudiantes.forEach(estudiante => {
-      if(estudiante.curso == $event.detail.value)        
+      if(estudiante.IDCURSO == $event.detail.value)        
         this.estudiantesPorCurso.push(estudiante);
       this.habilitarEstudiates = false;  
     });
@@ -162,40 +162,22 @@ export class BuscarActaPage implements OnInit {
 
   //CRUD de Entidad -- cursos -- utilizando el servicio 'cursosservice'
 
-  readCursos(){
-    this.cursosservice.getCursos().subscribe(data => {
-      this.cursos = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}
-        } as unknown as Cursos;
+  readCursos() {
+    this.cursosservice.getCursosList().valueChanges().subscribe(cursos => {
+        this.cursos = cursos
+        console.log(this.cursos);
       })
-    });
-  }
-  createCurso(cursos: Cursos){
-    this.cursosservice.createCursos(cursos);
-  }
-
-  updateCurso(cursos: Cursos) {
-    this.cursosservice.updateCursos(cursos);
-  }
-
-  deleteCurso(id: number) {
-    this.cursosservice.deleteCursos(id);
-  }
+    }
 
 
   //CRUD de Entidad -- estudiantes -- utilizando el servicio 'estudiantesservice'
 
+  
   readEstudiantes(){
-    this.estudiantesservice.getEstudiantes().subscribe(data => {
-      this.estudiantes = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}         
-        } as unknown as Estudiantes;
-      })
-    });    
+    this.estudiantesservice.getEstudiantesList().valueChanges().subscribe(estudiantes => {
+      this.estudiantes =estudiantes;
+      console.log(this.estudiantes);
+    })   
   }
 
   //CRUD de Entidad -- ActaSeguimientoDisciplinario -- utilizando el servicio 'ActaSeguimientoDisciplinarioService'
