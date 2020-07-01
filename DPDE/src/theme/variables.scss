@@ -246,9 +246,8 @@
  * iOS only CSS variables can go here
  */
 
-.ios {
 
-}
+
 
 /*
  * App Material Design Variables
@@ -256,9 +255,7 @@
  * Material Design only CSS variables can go here
  */
 
-.md {
 
-}
 
 /*
  * App Theme
@@ -418,7 +415,7 @@
 }
 
 ion-content {
-  --background: center / cover url('../assets/img/Background.png');
+  --background: center / cover url(/assets/img/Background.png);
   --ion-border-color: #222222
 }
 
@@ -432,14 +429,11 @@ ion-list {
 
 ion-header {
   --ion-background-color: rgba(0, 0, 0, 0); 
-}
 
-ion-tab-bar {
-  --ion-background-color: rgba(143, 37, 37, 0); 
 }
 
 ion-menu {
-  --background: center / cover url('../assets/img/FondoMenu.png');  
+  --background: center / cover url('../assets/img/MenuLateral/FondoMenu.png');  
   --ion-background-color: rgba(0, 0, 0, 0);
   --ion-text-color: #dbdbdb; 
 }
@@ -450,6 +444,88 @@ ion-menu {
   justify-content: center;
   flex-direction: column;
 }
+ion-menu-button{
+  
+  background: url(/assets/img/iconos/Menu3.png);
+  background-size: 95% 88%;
+  
+}
 
+ion-toolbar {
+  --background: center / cover url(/assets/img/Background.png);
+  --ion-border-color: #222222
+}
+.cuenta{
+  
+  background: url(/assets/img/MenuLateral/Cuenta.png);
+  
+}
+.cerrarsesion{
+  
+  background: url(/assets/img/MenuLateral/CerrarSesion.png);
+  
+}
+.tutorial{
+  
+  background: url(/assets/img/MenuLateral/Tutorial.png);
+  
+}
+.soporte{
+  
+  background: url(/assets/img/MenuLateral/Soporte.png);
+  
+}
+.nosotros{
+  
+  background: url(/assets/img/MenuLateral/Nosotros.png);
+  padding: 5px;
+  background-size: 100% 100%;
+}
+.registrarse{
+  
+  background: url(/assets/img/MenuLateral/Registro.png);
+  
+}
 
+ion-tab-button{
+  --ion-background-color: rgba(0, 0, 0, 0); 
+}
+
+ion-icon{
+  --ion-background-color: rgba(0, 0, 0, 0); 
+}
+
+ion-tabs{
+  --ion-background-color: rgba(0, 0, 0, 0);
+}
+
+.buscar{
+  
+  background: url(/assets/img/Tabs/Buscar.png);
+  padding: 5px;
+  background-size: 100% 100%;
+}
+.crear{
+  
+  background: url(/assets/img/Tabs/Crear.png);
+  padding: 5px;
+  background-size: 100% 100%;
+}
+.observador{
+  
+  background: url(/assets/img/Tabs/Observador.png);
+  padding: 5px;
+  background-size: 100% 100%;
+  
+}
+
+ion-tab-bar{
+  --background: center / cover url(/assets/img/Background.png);  
+  
+  
+
+}
+.input{
+  padding: 2% 20%;
+}
 

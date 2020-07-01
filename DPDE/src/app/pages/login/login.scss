@@ -5,10 +5,50 @@
 }
 
 .login-logo img {
-  max-width: 150px;
+  max-width: 100px;
 }
 
 .list {
   margin-bottom: 0;
 }
 
+.button1 {
+  color: white;
+  background: url(/assets/img/iconos/ACCEDERR.png);
+  text-transform: uppercase;
+  background-size: 100% 100%;
+  border: none;
+  padding: 15px 30px;
+  
+}
+
+.input{
+  
+  border-bottom: #2d294a 4px solid;
+  border-right: #2d294a 4px solid;
+  
+  
+  
+  padding: 15px 30px;
+}
+.label{
+  background: transparent rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  color: black;
+  display: block;
+  float: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  height: 21px;
+  
+  min-height: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  text-align: center;
+  text-size-adjust: 100%;
+  text-decoration: underline;
+  
+  
+}
+    

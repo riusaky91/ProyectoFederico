@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Observador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class ="centrarBusqueda">
+    <ion-item >
+      <ion-label>Curso</ion-label>
+      <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Curso">
+        <ion-select-option *ngFor="let curso of cursos">{{curso.IDCURSO}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>Estudiante</ion-label>
+      <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" placeholder="Seleccione el Estudiante">
+        <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" 
+        value="{{estudiante.IDESTUDIANTE}},
+        {{estudiante.NOMBRE}},
+        {{estudiante.EDAD}},
+        {{estudiante.IDCURSO}}">        
+            {{estudiante.NOMBRE}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div *ngIf= "estudianteElegido" >
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          {{datosEstudiante[1]}}<br>
+          Curso: {{datosEstudiante[3]}} <br>
+          Edad: {{datosEstudiante[2]}} años <br>
+          Jornada: Mañana
+        </ion-label>
+      </ion-item>
+          
+
+      <ion-item  >
+        <ion-label>Año</ion-label>
+        <ion-select ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Año" (ionChange)="onChangeLapso($event)">
+          <ion-select-option *ngFor="let lapso of lapsos" >{{lapso}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <section>
+        <ion-button expand="block" routerLink="/app/tabs/observador/observador-detalle/{{envio}}">Ver</ion-button>
+      </section>
+
+    </div>
+    
+    
+  </div>
+
+  
+</ion-content>

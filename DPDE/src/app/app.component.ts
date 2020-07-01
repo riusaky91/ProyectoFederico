@@ -18,27 +18,23 @@ import { UserData } from './providers/user-data';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  appPages = [
-    {
-      title: 'Buscar Acta',
-      url: '/app/tabs/buscar-acta',
-      icon: 'calendar'
-    },
-    {
-      title: 'Crear Acta',
-      url: '/app/tabs/crear-acta',
-      icon: 'people'
-    },
-    {
-      title: 'Observador',
-      url: '/app/tabs/map',
-      icon: 'map'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
-    }
+     appPages = [
+      {
+        title: 'Buscar Acta',
+        url: '/app/tabs/buscar-acta',
+        icono: '/assets/img/iconos/BuscarProceso.png'
+      },
+      {
+        title: 'Crear Acta',
+        url: '/app/tabs/crear-acta',
+        icono: '/assets/img/iconos/Crear.png'
+      },
+      {
+        title: 'Observador',
+        url: '/app/tabs/observador',
+        icono: '/assets/img/iconos/Observador.png'
+      }
+    
   ];
   loggedIn = false;
   dark = false;
@@ -117,7 +113,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/buscar-acta');
+      return this.router.navigateByUrl('/login');
     });
   }
 

@@ -7,100 +7,131 @@
           <ion-list-header>
             Menu Principal
           </ion-list-header>
-          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
-              <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-
-          </ion-menu-toggle>
+          <ion-list *ngIf="loggedIn" lines="none">
+            <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
+              <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+                <ion-img slot="start" [src]="p.icono"></ion-img>
+                <ion-label>
+                  {{p.title}}
+                </ion-label>    
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
         </ion-list>
 
         <ion-list *ngIf="loggedIn" lines="none">
           <ion-list-header>
-            Account
+            Sesion
           </ion-list-header>
 
           <ion-menu-toggle autoHide="false">
             <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-icon slot="start" class="cuenta"></ion-icon>
               <ion-label>
-                Account
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="help"></ion-icon>
-              <ion-label>
-                Support
+                Cuenta
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
             <ion-item button (click)="logout()" detail="false">
-              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-icon slot="start" class="cerrarsesion" ></ion-icon>
               <ion-label>
-                Logout
+                Cerrar Sesion
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
 
+          
+
+        </ion-list>
+
+        <ion-list *ngIf="loggedIn" lines="none">
+          <ion-list-header>
+            Tutorial
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="openTutorial()" detail="false">
+              <ion-icon slot="start" class="tutorial"></ion-icon>
+              <ion-label>Mostrar Tutorial</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-list>
 
         <ion-list *ngIf="!loggedIn" lines="none">
           <ion-list-header>
-            Account
+            Sesion y DPDE
           </ion-list-header>
 
           <ion-menu-toggle autoHide="false">
             <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="log-in"></ion-icon>
+              <ion-icon slot="start" class="cerrarsesion"></ion-icon>
               <ion-label>
                 Login
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>         
+ 
+        
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/signup" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" class="cuenta"></ion-icon>
+              <ion-label>
+                Recuperar Contraseña
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/recuperar" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" class="cuenta"></ion-icon>
+              <ion-label>
+                Registrarse
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
             <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="help"></ion-icon>
+              <ion-icon slot="start" class="soporte"></ion-icon>
               <ion-label>
-                Support
+                Soporte
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
 
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/signup" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person-add"></ion-icon>
-              <ion-label>
-                Signup
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
+          <!--
           <ion-item>
             <ion-icon slot="start" name="moon-outline"></ion-icon>
             <ion-label>
-              Dark Mode
+              Modo Oscuro
             </ion-label>
             <ion-toggle [(ngModel)]="dark"></ion-toggle>
-          </ion-item>
+          </ion-item>-->
         </ion-list>
 
-        <ion-list lines="none">
+        
+
+        <ion-list *ngIf="loggedIn" lines="none">
           <ion-list-header>
-            Tutorial
+            DPDE
           </ion-list-header>
+
           <ion-menu-toggle autoHide="false">
-            <ion-item button (click)="openlogin()" detail="false">
-              <ion-icon slot="start" name="hammer"></ion-icon>
-              <ion-label>Show Tutorial</ion-label>
+            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" class="soporte"></ion-icon>
+              <ion-label>
+                Soporte
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/app/tabs/about" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" class="nosotros"></ion-icon>
+              <ion-label>
+                Acerca de Nosotros
+              </ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

@@ -3,7 +3,7 @@
   <ion-header class="fondo">
     <ion-toolbar>
       <ion-buttons *ngIf="!showSearchbar" slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button class="menu"></ion-menu-button>
       </ion-buttons>
       <ion-segment *ngIf="ios" [(ngModel)]="segment" (ionChange)="updateSchedule()">
         <ion-segment-button value="all">
@@ -46,6 +46,7 @@
   </ion-header>
 
   <ion-content fullscreen="true" >
+    <div class="input">
     <ion-header collapse="condense">
       <ion-toolbar>
         <ion-title size="large">Buscar Acta de Seguimiento</ion-title>
@@ -59,7 +60,7 @@
     <ion-item *ngIf="segment === 'all'">
       <ion-label>Cursos</ion-label>
       <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar">
-        <ion-select-option *ngFor="let curso of cursos">{{curso.curso}}</ion-select-option>
+        <ion-select-option *ngFor="let curso of cursos">{{curso.IDCURSO}}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -67,7 +68,7 @@
       <ion-label>Estudiantes</ion-label>
       <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" >
         <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" value={{estudiante.id}}>        
-            {{estudiante.nombres+ ' '+ estudiante.apellidos}}
+            {{estudiante.NOMBRE}}
         </ion-select-option>
       </ion-select>
     </ion-item>
@@ -135,7 +136,7 @@
 
   </div>
 
-
+<!--
     <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
       <ion-fab-button>
         <ion-icon name="share-social"></ion-icon>
@@ -154,8 +155,7 @@
           <ion-icon name="logo-facebook"></ion-icon>
         </ion-fab-button>
       </ion-fab-list>
-    </ion-fab>
+    </ion-fab>-->
 
+  </div>
   </ion-content>
-
-

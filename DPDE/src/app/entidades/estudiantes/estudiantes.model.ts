@@ -1,8 +1,14 @@
 export class Estudiantes {
-    id: number;
-    nombres: string;
-    apellidos: string;
-    foto: string;
-    estado: string;
-    curso: number;
+    $key: string;
+    IDESTUDIANTE: string;
+    IDCURSO: string;
+    DIRECCION: string;
+    EDAD: number;
+    EMAIL: string;
+    EPS: string;
+    GRUPO_SANGUINEO:string;
+    JORNADA:string;
+    NOMBRE:string;
+    TELEFONO: string;
+    TIPO_DOCUMENTO: string
 }

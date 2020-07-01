@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { CrearActaDetallePage } from './crear-acta-detalle';
-import { CrearActaDetallePageRoutingModule } from './crear-acta-detalle-routing.module';
 import { IonicModule } from '@ionic/angular';
+
+import { CrearActaDetallePageRoutingModule } from './crear-acta-detalle-routing.module';
+
+import { CrearActaDetallePage } from './crear-acta-detalle.page';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     IonicModule,
     CrearActaDetallePageRoutingModule
   ],
-  declarations: [
-    CrearActaDetallePage,
-  ]
+  declarations: [CrearActaDetallePage]
 })
-export class CrearActaDetalleModule { }
+export class CrearActaDetallePageModule {}

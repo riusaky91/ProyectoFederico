@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 //Importando Conexion a Firebase y Entidad
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
 
 @Injectable({
@@ -9,26 +9,64 @@ import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
 })
 export class EstudiantesService {
 
+  estudiantesListRef: AngularFireList<any>;
+  estudiantesRef: AngularFireObject<any>;
+
   constructor(
-    private firestore: AngularFirestore//Inyeccion de Dependencias AngularFirestore
+    private db: AngularFireDatabase//Inyeccion de Dependencia AngularFireDatabase
   ) { }
 
   //CRUD BASICO COLECCIÓN --estudiantes--
 
-  getEstudiantes() {
-    return this.firestore.collection('estudiantes').snapshotChanges();
-  }
+// Create
+createEstudiante(estudiante: Estudiantes) {
+  return this.estudiantesListRef.push({
+    IDESTUDIANTE: estudiante.IDESTUDIANTE,
+    IDCURSO: estudiante.IDCURSO,
+    DIRECCION: estudiante.DIRECCION,
+    EDAD: estudiante.EDAD,
+    EMAIL: estudiante.EMAIL,
+    EPS: estudiante.EPS,
+    GRUPO_SANGUINEO:estudiante.GRUPO_SANGUINEO,
+    JORNADA:estudiante.JORNADA,
+    NOMBRE:estudiante.NOMBRE,
+    TELEFONO: estudiante.TELEFONO,
+    TIPO_DOCUMENTO: estudiante.TIPO_DOCUMENTO
+  })
+}
 
-  createEstudiantes(estudiantes: Estudiantes){
-    return this.firestore.collection('estudiantes').add(estudiantes);
-  }
+// Read Single
+getEstudiante(id: string) {
+  this.estudiantesRef = this.db.object('/ESTUDIANTES/' + id);
+  return this.estudiantesRef;
+}
 
-  updateEstudiantes(estudiantes: Estudiantes){
-    delete estudiantes.id;
-    this.firestore.doc('estudiantes/' + estudiantes.id).update(estudiantes);
-  }
+// Read Collection
+getEstudiantesList() {
+  this.estudiantesListRef = this.db.list('/ESTUDIANTES');
+  return this.estudiantesListRef;
+}
 
-  deleteEstudiantes(estudiantesId: number){
-    this.firestore.doc('estudiantes/' + estudiantesId).delete();
-  }
+// Delete
+deleteEstudiante(id: string) {
+  this.estudiantesRef = this.db.object('/ESTUDIANTES/' + id);
+  this.estudiantesRef.remove();
+}
+  
+// Update
+updateEstudiante(id, estudiante: Estudiantes) {
+  return this.estudiantesRef.update({
+    IDESTUDIANTE: estudiante.IDESTUDIANTE,
+    IDCURSO: estudiante.IDCURSO,
+    DIRECCION: estudiante.DIRECCION,
+    EDAD: estudiante.EDAD,
+    EMAIL: estudiante.EMAIL,
+    EPS: estudiante.EPS,
+    GRUPO_SANGUINEO:estudiante.GRUPO_SANGUINEO,
+    JORNADA:estudiante.JORNADA,
+    NOMBRE:estudiante.NOMBRE,
+    TELEFONO: estudiante.TELEFONO,
+    TIPO_DOCUMENTO: estudiante.TIPO_DOCUMENTO
+  })
+}
 }

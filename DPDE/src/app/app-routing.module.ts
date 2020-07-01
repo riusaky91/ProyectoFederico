@@ -32,7 +32,22 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
     canLoad: [CheckTutorial]
+ 
+  },
+  {
+    path: 'recuperar',
+    loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+  },
+  {
+    path: 'crear-acta-detalle',
+    loadChildren: () => import('./pages/crear-acta-detalle/crear-acta-detalle.module').then( m => m.CrearActaDetallePageModule)
+  },  {
+    path: 'observador-detalle',
+    loadChildren: () => import('./pages/observador-detalle/observador-detalle.module').then( m => m.ObservadorDetallePageModule)
   }
+
+
+
 ];
 
 @NgModule({
