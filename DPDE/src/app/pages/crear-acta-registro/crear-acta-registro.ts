@@ -79,19 +79,25 @@ export class CrearActaRegistroPage {
     this.tipoActa = parseInt(acta);
     console.log(this.tipoActa);
 
-
-    this.readEstudiantes();
+    this.getCursosList();
+    this.getEstudiantesList();
 
   }
 
 
   //CRUD de Entidad -- cursos -- utilizando el servicio 'cursosservice'
 
+  getCursosList() {
+    this.cursosservice.getCursosList().valueChanges().subscribe(cursos => {
+        this.cursos = cursos
+        console.log(this.cursos);
+      })
+    }
 
   //CRUD de Entidad -- estudiantes -- utilizando el servicio 'estudiantesservice'
 
   
-  readEstudiantes(){
+  getEstudiantesList(){
     this.estudiantesservice.getEstudiantesList().valueChanges().subscribe(estudiantes => {
       this.estudiantes =estudiantes;
       console.log(this.estudiantes);

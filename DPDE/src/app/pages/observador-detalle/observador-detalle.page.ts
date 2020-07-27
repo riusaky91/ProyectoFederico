@@ -18,32 +18,29 @@ export class ObservadorDetallePage implements OnInit {
 
   tipoActa: any;//Variable que contiene el tipo de acta seleccionada
 
-  estudiante: Estudiantes[] = null;
+  estudiante: Estudiantes;//Pendiente crear arreglo de objetos con las diferentes interfaces generadas en la pagina anterior
 
   constructor(
     private route: ActivatedRoute,
-    private estudiantesservice: EstudiantesService
+    private router: Router
   ) {
-    this.readEstudiante();
+    this.route.queryParams.subscribe(params =>{
+      if(this.router.getCurrentNavigation().extras.state){
+        this.estudiante = this.router.getCurrentNavigation().extras.state.user;
+        console.log(this.estudiante);
+      }
+    })
+    
    }
 
   async ngOnInit() {
-    
+    console.log(this.estudiante);
   }
   
 
   
-  ionViewWillEnter() {
-    const acta = this.route.snapshot.paramMap.get('envio');
-    this.tipoActa = acta;
-    console.log(this.tipoActa);
-  }
+  
 
-  readEstudiante(){
-    this.estudiantesservice.getEstudiante("01").valueChanges().subscribe(estudiante => {
-      this.estudiante = estudiante;
-      console.log(this.estudiante);
-    })   
-  }
+  
 
 }

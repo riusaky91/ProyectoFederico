@@ -29,11 +29,4 @@
       <ion-button *ngIf= "tipoActa>0" routerLink="/app/tabs/crear-acta/crear-acta-registro/{{tipoActa}}">Crear Acta</ion-button>
     </section>
     
-    <ion-item >
-      <ion-label>Curso</ion-label>
-      <ion-select  ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Curso">
-        <ion-select-option *ngFor="let curso of cursos">{{curso.id}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    
 </ion-content>

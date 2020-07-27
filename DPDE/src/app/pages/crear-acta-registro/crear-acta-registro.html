@@ -18,7 +18,7 @@
     <ion-item >
       <ion-label>Curso</ion-label>
       <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Curso">
-        <ion-select-option *ngFor="let curso of cursos">{{curso.curso}}</ion-select-option>
+        <ion-select-option *ngFor="let curso of cursos">{{curso.IDCURSO}}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -26,7 +26,7 @@
       <ion-label>Nombre Estudiante</ion-label>
       <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" placeholder="Seleccione el Estudiante">
         <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" value="{{estudiante.id}},{{estudiante.nombres}},{{estudiante.apellidos}},{{estudiante.edad}}">        
-            {{estudiante.nombres+ ' '+ estudiante.apellidos}}
+            {{estudiante.NOMBRE}}
         </ion-select-option>
       </ion-select>
     </ion-item>
