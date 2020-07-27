@@ -121,9 +121,10 @@ export class CrearActaRegistroPage {
 
   onChangeEstudiantes($event){   
     this.estudianteElegido = true;
-    this.datosEstudiante = $event.detail.value.split(',');
+    
     this.acta.datosEstudiante = this.estudiantesPorCurso[0];
     console.log(this.acta);
+    
   }
 
 
