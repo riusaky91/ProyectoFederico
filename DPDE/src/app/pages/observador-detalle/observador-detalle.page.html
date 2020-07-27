@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/observador"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle del Observador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Nombre Estudiante</h2>
+  
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Informacion Personal
+        </mat-panel-title>
+        <mat-panel-description>
+          Estudiante
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Nombre del Estudiante:
+        {{estudiante.NOMBRE}}<br>
+        Documento:
+        {{estudiante.IDESTUDIANTE}}<br>
+        Jornada:
+        {{estudiante.JORNADA}}<br>
+        Curso:
+        {{estudiante.IDCURSO}}<br>
+        Dirección/Barrio:<br>
+
+        Teléfonos:<br>
+        {{estudiante.TELEFONO}}<br>
+        EPS:
+        {{estudiante.EPS}}<br>
+        Grupo Sanguineo y RH:<br>
+
+        Correo Electronico:
+        {{estudiante.EMAIL}}<br>
+    </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Datos de los Padres Y/O Acudientes
+        </mat-panel-title>
+        <mat-panel-description>
+          Acudientes
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Informacion detallada del estudiante
+    </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Otros
+        </mat-panel-title>
+        <mat-panel-description>
+          Otros
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Informacion detallada del estudiante
+    </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Informacion Academica
+        </mat-panel-title>
+        <mat-panel-description>
+          Academica
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Informacion detallada del estudiante
+    </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Actas de Seguimiento Disciplinario
+        </mat-panel-title>
+        <mat-panel-description>
+          Actas
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Informacion detallada del estudiante
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <section>
+    <ion-button expand="block">Generar PDF</ion-button>
+  </section>
+</ion-content>

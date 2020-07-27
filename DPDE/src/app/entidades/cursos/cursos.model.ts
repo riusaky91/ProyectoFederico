@@ -1,6 +1,6 @@
 export class Cursos {
-    id: number;
-    curso: number;
-    cantEstudiantes: number;
-    directorGrupo: string;
+    $key: string;
+    IDCURSO: string;
+    DIRECTOR_GRUPO: string;
+    SALON: string
 }

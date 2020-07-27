@@ -36,6 +36,10 @@ const routes: Routes = [
           {
             path: 'crear-acta-registro/:actaId',
             loadChildren: () => import('../crear-acta-registro/crear-acta-registro.module').then(m => m.CrearActaRegistroModule)
+          },
+          {
+            path: 'crear-acta-detalle/:dataObj',
+            loadChildren: () => import('../crear-acta-detalle/crear-acta-detalle.module').then(m => m.CrearActaDetallePageModule)
           }
         ]
       },
@@ -45,6 +49,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../obsevador/observador.module').then(m => m.ObservadorModule)
+          },
+          {
+            path: 'observador-detalle/:envio',
+            loadChildren: () => import('../observador-detalle/observador-detalle.module').then(m => m.ObservadorDetallePageModule)
           }
         ]
       },
