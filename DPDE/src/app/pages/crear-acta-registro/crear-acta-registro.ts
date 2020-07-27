@@ -12,6 +12,8 @@ import { Cursos } from '../../entidades/cursos/cursos.model';
 import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.service';
 import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
 import { NgForm } from '@angular/forms';
+import { ActaSeguimientoDisciplinarioService } from '../../servicios/ActaSeguimientoDisciplinario/actaSeguimientoDisciplinario.service';
+import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDisciplinario/ActaSeguimientoDisciplinario.model';
 
 @Component({
   selector: 'crear-acta-registro',
@@ -28,20 +30,32 @@ export class CrearActaRegistroPage {
 
   //Variables que toman las Entidades
   estudiantes: Estudiantes[];
+  actaSeguimientoDisciplinario :ActaSeguimientoDisciplinario[];
+  actaCreada:ActaSeguimientoDisciplinario = {
+    $key:null,
+    COMPROMISO: null,
+    DESCARGO_ESTUDIANTE:null,
+    DESCRIPCION_DE_CONDUCTA: null,
+    FECHA_ACTA: null,
+    FIRMA_ESTUDIANTE: null,
+    FIRMA_DOCENTES: null,
+    TIPO: null,
+    ID_ACTA : null
+  };
   estudiantesPorCurso: Estudiantes[] = [];//variable que toma el filtro estudiantes por curso
   habilitarEstudiates: boolean;//variable que habilita o deshabilitala lista de estudiantes
 
   cursos: Cursos[];
+  
+  
 
   acta:any = {
-    fecha: '',
     hora: '',
     falta: '',
-    descargosEstudiante: '',
     observacionesDocente: '',
-    compromisoEstudiante: '',
     sancion:'',
-    datosEstudiante:''
+    datosEstudiante:'',
+    actaCreada: this.actaCreada
 
   }
 
@@ -55,6 +69,7 @@ export class CrearActaRegistroPage {
     //Inyeccion servicios de conexion para cada entidad
     private cursosservice: CursosService,
     private estudiantesservice: EstudiantesService,
+    private actaSeguimientoDisciplinarioService: ActaSeguimientoDisciplinarioService,
 
     public navCtrl: NavController,
     public router:Router,
@@ -68,6 +83,8 @@ export class CrearActaRegistroPage {
       }
     }
     this.router.navigate(['crear-acta-detalle'], navigationExtras)
+    
+    
   }
 
   limpiar(formularioActa:NgForm){
@@ -81,7 +98,8 @@ export class CrearActaRegistroPage {
 
     this.getCursosList();
     this.getEstudiantesList();
-
+    this.getActaSeguimientoDisciplinarioList();
+    
   }
 
 
@@ -104,6 +122,16 @@ export class CrearActaRegistroPage {
     })   
   }
 
+  //CRUD de Entidad -- ActaSeguimientoDisciplinario -- utilizando el servicio 'ActaSeguimientoDisciplinarioservice'
+
+  
+  getActaSeguimientoDisciplinarioList(){
+    this.actaSeguimientoDisciplinarioService.getActaSeguimientoDisciplinarioList().valueChanges().subscribe(actaSeguimientoDisciplinario => {
+      this.actaSeguimientoDisciplinario =actaSeguimientoDisciplinario;
+      console.log(this.actaSeguimientoDisciplinario);
+    })   
+  }
+
   //Metodo que toma el valor del curso seleccionado y lista sus estudiantes
   onChangeCursos($event){   
     this.estudiantesPorCurso = [];
@@ -121,8 +149,7 @@ export class CrearActaRegistroPage {
 
   onChangeEstudiantes($event){   
     this.estudianteElegido = true;
-    
-    this.acta.datosEstudiante = this.estudiantesPorCurso[0];
+    this.acta.datosEstudiante  = this.estudiantesPorCurso.find(x=>x.IDESTUDIANTE== $event.detail.value);
     console.log(this.acta);
     
   }

@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrearActaRegistroPage } from '../crear-acta-registro/crear-acta-registro';
 
+//Servicios
+import { ActaSeguimientoDisciplinarioService } from '../../servicios/ActaSeguimientoDisciplinario/actaSeguimientoDisciplinario.service';
+
 @Component({
   selector: 'app-crear-acta-detalle',
   templateUrl: './crear-acta-detalle.page.html',
   styleUrls: ['./crear-acta-detalle.page.scss'],
 })
-export class CrearActaDetallePage {
+export class CrearActaDetallePage implements OnInit{
 
   acta:any;
 
@@ -15,7 +18,8 @@ export class CrearActaDetallePage {
   
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private actaSeguimientoDisciplinarioService: ActaSeguimientoDisciplinarioService,
   ) { 
       this.route.queryParams.subscribe(params =>{
         if(this.router.getCurrentNavigation().extras.state){
@@ -24,6 +28,13 @@ export class CrearActaDetallePage {
         }
       })
   }
+  ngOnInit(): void {
+    this.createActaSeguimientoDisciplinario();
+  }
 
+  //CRUD de Entidad -- ActaSeguimientoDisciplinario -- utilizando el servicio 'ActaSeguimientoDisciplinarioservice'
+  createActaSeguimientoDisciplinario(){
+    this.actaSeguimientoDisciplinarioService.createActaSeguimientoDisciplinario(this.acta.actaCreada)
+  }
 
 }
