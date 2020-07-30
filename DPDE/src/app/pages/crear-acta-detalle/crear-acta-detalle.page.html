@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/crear-acta"></ion-back-button>
+    </ion-buttons>
     <ion-title>crear-acta-detalle</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -70,8 +73,8 @@
   </ion-item>
 </ion-list>
 
-<ion-button expand="full" type="submit" (click)="generarPDF()">
-  Generar PDF
-</ion-button>
+<section>
+  <ion-button expand="block" (click)="generarPDF()">Generar PDF</ion-button>
+</section>
 
 </ion-content>

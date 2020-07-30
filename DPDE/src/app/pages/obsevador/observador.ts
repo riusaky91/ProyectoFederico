@@ -12,6 +12,9 @@ import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.serv
 import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
 import { NavigationExtras, Router } from '@angular/router';
 
+
+
+
 @Component({
   selector: 'observador-map',
   templateUrl: 'observador.html',
@@ -32,7 +35,6 @@ export class ObservadorPage implements AfterViewInit {
   lapsos : any = ["Todos","2020","2019","2018","2017","2016","2015"];
 
   envio: string;
-  
 
   constructor(
       //Inyeccion servicios de conexion para cada entidad
@@ -108,6 +110,8 @@ export class ObservadorPage implements AfterViewInit {
     await alert.present();
   }
 
+  //Metodo que envia a la sigueinte pagina con el objeto
+
   generar(){
     let navigationExtras: NavigationExtras = {
       state: {
@@ -116,6 +120,8 @@ export class ObservadorPage implements AfterViewInit {
     }
     this.router.navigate(['observador-detalle'], navigationExtras)
   }
+
+  
   
 }
 

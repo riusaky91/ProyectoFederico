@@ -12,6 +12,7 @@ export class CrearActaPage{
   
   tipoActa : number = 0;//Variable que toma el tipo de acta seleccionada
   cursos : any[];
+  alertCtrl: any;
 
   constructor(
     public alertController: AlertController,
@@ -40,4 +41,6 @@ export class CrearActaPage{
 
     await alert.present();
   }
+
+  
 }

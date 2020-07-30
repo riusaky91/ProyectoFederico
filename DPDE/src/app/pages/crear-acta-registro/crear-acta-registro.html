@@ -48,7 +48,7 @@
   </ion-item>
 
   <!--FORMULARIO PARA LOS TIPOS DE ACTAS-->  
-  <form #formularioActa="ngForm" (ngSubmit)="generar()">
+  <form #formularioActa="ngForm" >
 
     <ion-list>
 
@@ -122,6 +122,7 @@
       <ion-item>
         <ion-label position="stacked">Firma del Estudiante</ion-label>
         <ion-textarea></ion-textarea>
+        <signature-pad [options]="signaturePadOptions" id="signaturePad" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
       </ion-item>
       
       <ion-item>
@@ -169,7 +170,7 @@
       
     </ion-list>
   
-    <ion-button expand="full" type="submit" [disabled]="formularioActa.invalid" (click)="generar()">
+    <ion-button expand="full" type="submit" [disabled]="formularioActa.invalid" (click)="guardarActaAlerta()">
       Generar
     </ion-button>
     <ion-button expand="full" (click)="limpiar(formularioActa)">

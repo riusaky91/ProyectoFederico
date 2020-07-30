@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { ConferenceData } from '../../providers/conference-data';
-import { ActionSheetController, NavController } from '@ionic/angular';
+import { ActionSheetController, NavController, AlertController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 /*Importando servicios y entidades para conexion a BD*/
@@ -15,12 +15,52 @@ import { NgForm } from '@angular/forms';
 import { ActaSeguimientoDisciplinarioService } from '../../servicios/ActaSeguimientoDisciplinario/actaSeguimientoDisciplinario.service';
 import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDisciplinario/ActaSeguimientoDisciplinario.model';
 
+//Firma
+
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
 @Component({
   selector: 'crear-acta-registro',
   templateUrl: 'crear-acta-registro.html',
   styleUrls: ['./crear-acta-registro.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CrearActaRegistroPage),
+      multi: true,
+    },
+  ],
 })
-export class CrearActaRegistroPage {
+
+
+export class CrearActaRegistroPage implements OnInit{
+
+  
+  @ViewChild('sPad', {static: true}) signaturePad;
+  signPad: any;
+
+  private signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
+    'maxWidth': 1,
+    'minWidth': 1,
+    'canvasWidth': 350,
+    'canvasHeight': 300,
+    'backgroundColor': 'grey'
+  };
+
+  clear() {
+    this.signPad.clear();
+  }
+
+  drawStart(){
+    console.log("inicio de dibujo");
+  }
+
+  drawComplete(){
+    console.log("fin de dibujo");
+    this.signaturePad.clear()
+  }
+
   speaker: any;
 
   tipoActa: number;//Variable que contiene el tipo de acta seleccionada
@@ -73,8 +113,14 @@ export class CrearActaRegistroPage {
 
     public navCtrl: NavController,
     public router:Router,
+    public alertController: AlertController
 
-  ) {  }
+  ) { 
+      const acta = this.route.snapshot.paramMap.get('actaId');
+      this.tipoActa = parseInt(acta);
+      console.log(this.tipoActa);
+
+   }
 
   generar(){
     let navigationExtras: NavigationExtras = {
@@ -82,8 +128,8 @@ export class CrearActaRegistroPage {
         user: this.acta
       }
     }
+    this.createActaSeguimientoDisciplinario();
     this.router.navigate(['crear-acta-detalle'], navigationExtras)
-    
     
   }
 
@@ -91,11 +137,8 @@ export class CrearActaRegistroPage {
     formularioActa.reset();
   }
 
-  ionViewWillEnter() {
-    const acta = this.route.snapshot.paramMap.get('actaId');
-    this.tipoActa = parseInt(acta);
-    console.log(this.tipoActa);
-
+  ngOnInit() {
+    
     this.getCursosList();
     this.getEstudiantesList();
     this.getActaSeguimientoDisciplinarioList();
@@ -132,6 +175,10 @@ export class CrearActaRegistroPage {
     })   
   }
 
+  createActaSeguimientoDisciplinario(){
+    this.actaSeguimientoDisciplinarioService.createActaSeguimientoDisciplinario(this.acta.actaCreada)
+  }
+
   //Metodo que toma el valor del curso seleccionado y lista sus estudiantes
   onChangeCursos($event){   
     this.estudiantesPorCurso = [];
@@ -147,11 +194,32 @@ export class CrearActaRegistroPage {
     }
   }
 
+  //Carga los datos del estudiante en el objeto acta
   onChangeEstudiantes($event){   
     this.estudianteElegido = true;
     this.acta.datosEstudiante  = this.estudiantesPorCurso.find(x=>x.IDESTUDIANTE== $event.detail.value);
-    console.log(this.acta);
-    
+  }
+
+  async  guardarActaAlerta() {
+    const alert = await this.alertController.create({
+      header: 'Alerta!',
+      message: '¿Está seguro de guardar una nueva Acta de Seguimiento?',
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancelación');
+        }
+      }, {
+        text: 'Aceptar',
+        handler: () => {
+          this.generar();
+        }
+      }]
+    });
+
+    await alert.present();
   }
 
 
