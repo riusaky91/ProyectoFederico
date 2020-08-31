@@ -35,10 +35,10 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
 export class CrearActaRegistroPage implements OnInit{
-
   
-  @ViewChild('sPad', {static: true}) signaturePad;
-  signPad: any;
+  
+  @ViewChild(SignaturePad) signaturePad: SignaturePad;//Error no controlado por editor
+  
 
   private signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
     'maxWidth': 1,
@@ -48,8 +48,8 @@ export class CrearActaRegistroPage implements OnInit{
     'backgroundColor': 'grey'
   };
 
-  clear() {
-    this.signPad.clear();
+  limpiarFirma() {
+    this.signaturePad.clear()
   }
 
   drawStart(){
@@ -58,8 +58,11 @@ export class CrearActaRegistroPage implements OnInit{
 
   drawComplete(){
     console.log("fin de dibujo");
-    this.signaturePad.clear()
+    this.firmaEstudiante = this.signaturePad.toDataURL();
+    console.log(this.signaturePad.toDataURL());
   }
+
+  firmaEstudiante: string = "";
 
   speaker: any;
 
@@ -135,6 +138,7 @@ export class CrearActaRegistroPage implements OnInit{
 
   limpiar(formularioActa:NgForm){
     formularioActa.reset();
+    this.limpiarFirma();
   }
 
   ngOnInit() {
