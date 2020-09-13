@@ -120,7 +120,7 @@ export class BuscarActaPage implements OnInit {
 
     this.readCursos();
     this.readEstudiantes();
-    this.readActaSeguimientoDisciplinario();
+
     
     
     
@@ -147,7 +147,7 @@ export class BuscarActaPage implements OnInit {
   onChangeEstudiantes($event){   
     this.actasSeguimientoDisciplinarioPorEstudiante = [];
     this.actasSeguimientoDisciplinario.forEach(acta => {
-      if($event.detail.value == acta.ID_ESTUDIANTE)
+      if($event.detail.value == acta.ID_ACTA)
         this.actasSeguimientoDisciplinarioPorEstudiante.push(acta);
       this.habilitarActas = false;                         
     });
@@ -182,28 +182,11 @@ export class BuscarActaPage implements OnInit {
 
   //CRUD de Entidad -- ActaSeguimientoDisciplinario -- utilizando el servicio 'ActaSeguimientoDisciplinarioService'
 
-  readActaSeguimientoDisciplinario(){
-    this.actaSeguimientoDisciplinarioService.getActaSeguimientoDisciplinario().subscribe(data => {
-      this.actasSeguimientoDisciplinario = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}
-        } as unknown as ActaSeguimientoDisciplinario;
-      })
-      console.log(this.actasSeguimientoDisciplinario);
-    });
-  }
-  createActaSeguimientoDisciplinario(actaSeguimientoDisciplinario: ActaSeguimientoDisciplinario){
-    this.actaSeguimientoDisciplinarioService.createActaSeguimientoDisciplinario(actaSeguimientoDisciplinario);
-  }
 
-  updateActaSeguimientoDisciplinario(actaSeguimientoDisciplinario: ActaSeguimientoDisciplinario) {
-    this.actaSeguimientoDisciplinarioService.updateActaSeguimientoDisciplinario(actaSeguimientoDisciplinario);
-  }
 
-  deleteActaSeguimientoDisciplinario(id: number) {
-    this.actaSeguimientoDisciplinarioService.deleteActaSeguimientoDisciplinario(id);
-  }
+
+
+
 
   updateSchedule() {
     // Close any open sliding items when the schedule updates
