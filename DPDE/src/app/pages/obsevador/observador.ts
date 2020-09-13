@@ -13,7 +13,7 @@ import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
 import { NavigationExtras, Router } from '@angular/router';
 
 
-
+ 
 
 @Component({
   selector: 'observador-map',
