@@ -18,42 +18,48 @@
 
   <ion-item >
     <ion-label position="stacked">Nombre Completo </ion-label>
-    <ion-label>{{acta.datosEstudiante.nombres}}</ion-label>
-    <ion-label>{{acta.datosEstudiante.apellidos}}</ion-label>
+    <ion-label>{{acta.datosEstudiante.NOMBRE}}</ion-label>
   </ion-item>
 
   <ion-item >
     <ion-label position="stacked">Numero de Identificación </ion-label>
-    <ion-label>{{acta.datosEstudiante.id}}</ion-label>
+    <ion-label>{{acta.datosEstudiante.IDESTUDIANTE}}</ion-label>
   </ion-item>
 
   <ion-item >
     <ion-label position="stacked">Edad </ion-label>
-    <ion-label>{{acta.datosEstudiante.edad}} años</ion-label>
-  </ion-item>
-
-  <ion-item >
-    <ion-label position="stacked">Clase </ion-label>
-    <ion-label>{{acta.datosEstudiante.curso}} </ion-label>
+    <ion-label>{{acta.datosEstudiante.EDAD}} años</ion-label>
   </ion-item>
 
   <ion-item >
     <ion-label position="stacked">Curso </ion-label>
-    <ion-label>{{acta.datosEstudiante.curso}} </ion-label>
+    <ion-label>{{acta.datosEstudiante.IDCURSO}} </ion-label>
+  </ion-item>
+
+  <ion-item >
+    <ion-label position="stacked">Descripción de la Conducta: </ion-label>
+    <ion-label>A la fecha {{acta.actaCreada.FECHA_ACTA}} el estudiante en mencion<br>
+      incumple con el deber ----  <br>
+      Es la --- vez que infringe
+      El estuduante ha sido advertido de concecuencias disciplinarias, motivo por el cual<br> 
+      se llama la atención y se porcede a la firma del respectivo compromiso.<br>
+      La institucion informara a los padres y/o acudientes acerca de este comportamiento. 
+      
+    </ion-label>
   </ion-item>
 
   <ion-item >
     <ion-label position="stacked">Descargos estudiante: </ion-label>
-    <ion-label>{{acta.descargosEstudiante}}</ion-label>
+    <ion-label>{{acta.actaCreada.DESCARGO_ESTUDIANTE}}</ion-label>
   </ion-item>
 
   <ion-item >
     <ion-label position="stacked">Compromiso estudiante: </ion-label>
-    <ion-label>{{acta.compromisoEstudiante}}</ion-label>
+    <ion-label>{{acta.actaCreada.COMPROMISO}}</ion-label>
   </ion-item>
 
   <ion-item >
-    <ion-label position="stacked">La presente acta dias : </ion-label>
+    <ion-label position="stacked">La presente acta se genera a los  : {{acta.actaCreada.FECHA_ACTA}} </ion-label>
   </ion-item>
 
   <ion-item >
@@ -66,5 +72,9 @@
     <ion-label>Firmita</ion-label>
   </ion-item>
 </ion-list>
+
+<section>
+  <ion-button expand="block" (click)="generarPDF()">Generar PDF</ion-button>
+</section>
 
 </ion-content>

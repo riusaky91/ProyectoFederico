@@ -1,12 +1,11 @@
 export class ActaSeguimientoDisciplinario {
-    id: number;
-    ID_ESTUDIANTE: number;
-    ID_MANUAL: number;
-    TIPO_ACTA: string;
-    COMPROMISO_ESTUDIANTE: string;
-    DESCARGOS_ESTUDIANTE: string;
-    FECHA_CREACION: Date;
-    FECHA_MODIFICACION: Date;
-    FIRMA_ESTUDIANTE: number;
-    FIRMA_DOCENTE: number;
+    $key: string;
+    COMPROMISO: string;
+    DESCARGO_ESTUDIANTE: string;
+    DESCRIPCION_DE_CONDUCTA: string;
+    TIPO: string;
+    ID_ACTA: string;
+    FECHA_ACTA: string;
+    FIRMA_ESTUDIANTE: string;
+    FIRMA_DOCENTES: string;
 }

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConferenceData } from '../../providers/conference-data';
 import { AlertController } from '@ionic/angular';
 
-import { Cursos } from '../../entidades/cursos/cursos.model';
-import { CursosService } from '../../servicios/cursos/cursos.service';
 
 
 @Component({
@@ -11,53 +8,18 @@ import { CursosService } from '../../servicios/cursos/cursos.service';
   templateUrl: 'crear-acta.html',
   styleUrls: ['./crear-acta.scss'],
 })
-export class CrearActaPage implements OnInit {
+export class CrearActaPage{
   
-
-  
-
   tipoActa : number = 0;//Variable que toma el tipo de acta seleccionada
   cursos : any[];
+  alertCtrl: any;
 
   constructor(
     public alertController: AlertController,
-    private cursosService : CursosService
+
   ) { 
 
   }
-
-
-  async  ngOnInit(){  //es necesaria la palabra reservasa async pcuando se usan promises
-    this.traerCursos();
-  }
-
-
-  traerCursos() {
-    this.cursosService.getCursosList().valueChanges().subscribe(cursos => {
-        this.cursos = cursos
-        console.log(this.cursos);
-      })
-    }
-    
-  traerCurso(){
-    this.cursosService.getCurso("1").valueChanges().subscribe(res => {
-      this.cursos = res;
-    })
-    console.log(this.cursos);
-  }
-
-  crearCurso(curso: Cursos){
-    this.cursosService.createCurso(curso);
-    console.log("Curso Creado");
-  }
-
-
-
-  ionViewDidEnter() {
-    
-  }
-
-
 
   onChangeActas($event){
 
@@ -79,4 +41,6 @@ export class CrearActaPage implements OnInit {
 
     await alert.present();
   }
+
+  
 }

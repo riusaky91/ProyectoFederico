@@ -119,7 +119,7 @@
       <ion-item-sliding *ngFor="let acta of actasSeguimientoDisciplinarioPorEstudiante" #slidingItem [attr.track]="acta.TIPO_ACTA | lowercase" [hidden] = habilitarActas>
         <ion-item routerLink="/app/tabs/buscar-acta/acta/{{acta.id}}">
           <ion-label>
-            <h3>{{acta.ID_MANUAL}} - {{acta.DESCARGOS_ESTUDIANTE}} - Tipo de Acta  - {{acta.TIPO_ACTA}}</h3>
+            <h3>{{acta.ID_MANUAL}} - {{acta.DESCARGOS_ESTUDIANTE}} - Tipos de Acta  - {{acta.TIPO_ACTA}}</h3>
             <p>
               {{acta.FECHA_CREACION}} &mdash; {{acta.FECHA_MODIFICACION}}: {{acta.FECHA_CREACION}}
             </p>

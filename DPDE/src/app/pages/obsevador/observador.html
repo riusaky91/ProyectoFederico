@@ -20,10 +20,7 @@
       <ion-label>Estudiante</ion-label>
       <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" placeholder="Seleccione el Estudiante">
         <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" 
-        value="{{estudiante.IDESTUDIANTE}},
-        {{estudiante.NOMBRE}},
-        {{estudiante.EDAD}},
-        {{estudiante.IDCURSO}}">        
+        value="{{estudiante.IDESTUDIANTE}}">        
             {{estudiante.NOMBRE}}
         </ion-select-option>
       </ion-select>
@@ -32,9 +29,9 @@
     <div *ngIf= "estudianteElegido" >
       <ion-item>
         <ion-label class="ion-text-wrap">
-          {{datosEstudiante[1]}}<br>
-          Curso: {{datosEstudiante[3]}} <br>
-          Edad: {{datosEstudiante[2]}} años <br>
+          {{datosEstudiante.NOMBRE}}<br>
+          Curso: {{datosEstudiante.IDCURSO}} <br>
+          Edad: {{datosEstudiante.EDAD}} años <br>
           Jornada: Mañana
         </ion-label>
       </ion-item>
@@ -48,12 +45,11 @@
       </ion-item>
 
       <section>
-        <ion-button expand="block" routerLink="/app/tabs/observador/observador-detalle/{{envio}}">Ver</ion-button>
+        <ion-button *ngIf= "envio==null" (click)="ventanaAlerta()">Ver</ion-button>
+        <ion-button *ngIf= "envio!=null" (click)="generar()">Ver</ion-button>
       </section>
 
     </div>
-    
-    
   </div>
 
   

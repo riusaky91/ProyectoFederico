@@ -7,8 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
 
+//Crear Firma 
+import { SignaturePadModule } from 'angular2-signaturepad';
+
+
 @NgModule({
   imports: [
+    SignaturePadModule,
     CommonModule,
     IonicModule,
     FormsModule,

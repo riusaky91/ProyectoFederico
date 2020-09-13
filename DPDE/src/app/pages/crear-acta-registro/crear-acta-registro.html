@@ -18,15 +18,15 @@
     <ion-item >
       <ion-label>Curso</ion-label>
       <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Curso">
-        <ion-select-option *ngFor="let curso of cursos">{{curso.curso}}</ion-select-option>
+        <ion-select-option *ngFor="let curso of cursos">{{curso.IDCURSO}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item >
       <ion-label>Nombre Estudiante</ion-label>
       <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" placeholder="Seleccione el Estudiante">
-        <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" value="{{estudiante.id}},{{estudiante.nombres}},{{estudiante.apellidos}},{{estudiante.edad}}">        
-            {{estudiante.nombres+ ' '+ estudiante.apellidos}}
+        <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" value="{{estudiante.IDESTUDIANTE}}">        
+            {{estudiante.NOMBRE}}
         </ion-select-option>
       </ion-select>
     </ion-item>
@@ -37,18 +37,18 @@
 
   <ion-item>
     <ion-label class="ion-text-wrap">
-      Identificacion: {{datosEstudiante[0]}}
+      Identificacion: {{acta.datosEstudiante.IDESTUDIANTE}}
     </ion-label>
   </ion-item>
 
   <ion-item>
     <ion-label class="ion-text-wrap">
-      Edad: {{datosEstudiante[3]}}
+      Edad: {{acta.datosEstudiante.EDAD}}
     </ion-label>
   </ion-item>
 
   <!--FORMULARIO PARA LOS TIPOS DE ACTAS-->  
-  <form #formularioActa="ngForm" (ngSubmit)="generar()">
+  <form #formularioActa="ngForm" >
 
     <ion-list>
 
@@ -60,7 +60,7 @@
     
       <ion-item>
         <ion-label>Fecha</ion-label>
-        <ion-datetime  placeholder="Seleccione la Fecha" ok-text="Aceptar" cancel-text="Cancelar" [(ngModel)]="acta.fecha" name="fecha" required></ion-datetime>
+        <ion-datetime  placeholder="Seleccione la Fecha" ok-text="Aceptar" cancel-text="Cancelar" [(ngModel)]="actaCreada.FECHA_ACTA" name="fecha" required></ion-datetime>
       </ion-item>
 
       <ion-item>
@@ -76,12 +76,12 @@
           <ion-select-option value=3 >1523 - Comer en Clase</ion-select-option>
         </ion-select>
       </ion-item>
-
+      
       <ion-item>
         <ion-label position="floating">Descargos del Estudiante</ion-label>
         <ion-textarea type="text"
-                      [(ngModel)]="acta.descargosEstudiante" 
-                      name="descargosEstudiante"
+                      [(ngModel)]="actaCreada.DESCARGO_ESTUDIANTE" 
+                      name="DESCARGO_ESTUDIANTE"
                       autocapitalize="words"
                       maxlength=30
                       required ></ion-textarea>
@@ -100,8 +100,8 @@
       <ion-item *ngIf="tipoActa == 1 || tipoActa == 2">
         <ion-label position="floating">Compromiso del Estudiante</ion-label>
         <ion-textarea type="text"
-                      [(ngModel)]="acta.compromisoEstudiante" 
-                      name="compromisoEstudiante"
+                      [(ngModel)]="actaCreada.COMPROMISO" 
+                      name="COMPROMISO"
                       autocapitalize="words"
                       maxlength=30
                       required ></ion-textarea>
@@ -115,13 +115,14 @@
 
       <ion-item>
         <ion-label class="ion-text-wrap">
-          Nombre Estudiante: {{datosEstudiante[1]}} {{datosEstudiante[2]}}
+          Nombre Estudiante: {{acta.datosEstudiante.NOMBRE}}
         </ion-label>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Firma del Estudiante</ion-label>
         <ion-textarea></ion-textarea>
+        <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
       </ion-item>
       
       <ion-item>
@@ -169,7 +170,7 @@
       
     </ion-list>
   
-    <ion-button expand="full" type="submit" [disabled]="formularioActa.invalid" (click)="generar()">
+    <ion-button expand="full" type="submit" [disabled]="formularioActa.invalid" (click)="guardarActaAlerta()">
       Generar
     </ion-button>
     <ion-button expand="full" (click)="limpiar(formularioActa)">

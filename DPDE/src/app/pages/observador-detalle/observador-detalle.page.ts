@@ -9,6 +9,12 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.service';
 import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
 
+
+//PDF
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'app-observador-detalle',
   templateUrl: './observador-detalle.page.html',
@@ -18,32 +24,79 @@ export class ObservadorDetallePage implements OnInit {
 
   tipoActa: any;//Variable que contiene el tipo de acta seleccionada
 
-  estudiante: Estudiantes[] = null;
+  estudiante: Estudiantes;//Pendiente crear arreglo de objetos con las diferentes interfaces generadas en la pagina anterior
+
+  pdfObject : any;
 
   constructor(
     private route: ActivatedRoute,
-    private estudiantesservice: EstudiantesService
+    private router: Router
   ) {
-    this.readEstudiante();
+    this.route.queryParams.subscribe(params =>{
+      if(this.router.getCurrentNavigation().extras.state){
+        this.estudiante = this.router.getCurrentNavigation().extras.state.user;
+        console.log(this.estudiante);
+      }
+    })
+    
    }
 
   async ngOnInit() {
-    
+    console.log(this.estudiante);
   }
   
 
-  
-  ionViewWillEnter() {
-    const acta = this.route.snapshot.paramMap.get('envio');
-    this.tipoActa = acta;
-    console.log(this.tipoActa);
+
+//Metodo que genera un PDF
+generarPDF(){
+  console.log("Holita");
+
+  let docDefinition={
+    content: [
+      {
+        text:'Informacion personal del Estudiante. \n\n',
+        style: 'Cabecera'
+      },
+      
+      'Nombre del Estudiante: '+this.estudiante.NOMBRE,
+      'Documento: '+this.estudiante.IDESTUDIANTE,
+      'Jornada:'+ this.estudiante.JORNADA,
+      'Curso:'+this.estudiante.IDCURSO,
+      'Dirección/Barrio: ',
+
+      'Teléfonos: '+this.estudiante.TELEFONO,
+      
+      'EPS: '+this.estudiante.EPS,
+      'Grupo Sanguineo y RH: ',      
+      'Correo Electronico: '+this.estudiante.EMAIL+'\n\n',
+      {
+        style: 'tabla',
+        table: {
+          body: [
+            ['Columna 1', 'Columna 2', 'Columna 3'],
+            ['valor', 'un estudiante', 'flipendo']
+          ]
+        }
+      },
+    ],
+    styles: {
+      Cabecera: {
+        fontSize: 18,
+        bold: true
+      },
+      tabla: {
+        margin: [0, 5, 0, 15]
+      },
+    }
+
   }
 
-  readEstudiante(){
-    this.estudiantesservice.getEstudiante("01").valueChanges().subscribe(estudiante => {
-      this.estudiante = estudiante;
-      console.log(this.estudiante);
-    })   
-  }
+  this.pdfObject = pdfMake.createPdf(docDefinition).download();
+
+}
+  
+  
+
+  
 
 }

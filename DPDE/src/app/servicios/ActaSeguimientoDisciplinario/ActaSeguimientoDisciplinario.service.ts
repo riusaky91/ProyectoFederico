@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 //Importando Conexion a Firebase y Entidad
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDisciplinario/ActaSeguimientoDisciplinario.model';
 
 @Injectable({
@@ -9,33 +9,58 @@ import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDis
 })
 export class ActaSeguimientoDisciplinarioService {
 
+  actaSeguimientoDisciplinarioListRef: AngularFireList<any>;
+  actaSeguimientoDisciplinarioRef: AngularFireObject<any>;
+
   constructor(
-    private firestore: AngularFirestore//Inyeccion de Dependencias AngularFirestore
+    private db: AngularFireDatabase
   ) { }
 
-  //CRUD BASICO COLECCIÓN --ACTA_SEGUIMIENTO_DISCIPLINARIO--
+  // Create
+createActaSeguimientoDisciplinario(actaSeguimientoDisciplinario: ActaSeguimientoDisciplinario) {
+  return this.actaSeguimientoDisciplinarioListRef.push({
+    COMPROMISO: actaSeguimientoDisciplinario.COMPROMISO,
+    DESCARGO_ESTUDIANTE: actaSeguimientoDisciplinario.DESCARGO_ESTUDIANTE,
+    DESCRIPCION_DE_CONDUCTA: actaSeguimientoDisciplinario.DESCRIPCION_DE_CONDUCTA,
+    FECHA_ACTA: actaSeguimientoDisciplinario.FECHA_ACTA,
+    FIRMA_ESTUDIANTE: actaSeguimientoDisciplinario.FIRMA_ESTUDIANTE,
+    FIRMA_DOCENTES: actaSeguimientoDisciplinario.FIRMA_DOCENTES,
+    TIPO: actaSeguimientoDisciplinario.TIPO,
+    ID_ACTA : actaSeguimientoDisciplinario.ID_ACTA
+  })
+}
 
-  getActaSeguimientoDisciplinario() {
-    return this.firestore.collection('ACTA_SEGUIMIENTO_DISCIPLINARIO').snapshotChanges();
-  }
+// Read Single
+getActaSeguimientoDisciplinario(id: string) {
+  this.actaSeguimientoDisciplinarioRef = this.db.object('/ACTA/' + id);
+  return this.actaSeguimientoDisciplinarioRef;
+}
 
-  createActaSeguimientoDisciplinario(actaSeguimientoDisciplinario: ActaSeguimientoDisciplinario){
-    return this.firestore.collection('ACTA_SEGUIMIENTO_DISCIPLINARIO').add(actaSeguimientoDisciplinario);
-  }
+// Read Collection
+getActaSeguimientoDisciplinarioList() {
+  this.actaSeguimientoDisciplinarioListRef = this.db.list('/ACTA');
+  return this.actaSeguimientoDisciplinarioListRef;
+}
 
-  updateActaSeguimientoDisciplinario(actaSeguimientoDisciplinario: ActaSeguimientoDisciplinario){
-    delete actaSeguimientoDisciplinario.id;
-    this.firestore.doc('ACTA_SEGUIMIENTO_DISCIPLINARIO/' + actaSeguimientoDisciplinario.id).update(actaSeguimientoDisciplinario);
-  }
-
-  deleteActaSeguimientoDisciplinario(actaSeguimientoDisciplinarioId: number){
-    this.firestore.doc('ACTA_SEGUIMIENTO_DISCIPLINARIO/' + actaSeguimientoDisciplinarioId).delete();
-  }
-
-  //traer un acta con un id
-  getActaSeguimientoDisciplinarioConId(actaSeguimientoDisciplinarioId: number) {
-    
-  }
+// Delete
+deleteActaSeguimientoDisciplinario(id: string) {
+  this.actaSeguimientoDisciplinarioRef = this.db.object('/ACTA/' + id);
+  this.actaSeguimientoDisciplinarioRef.remove();
+}
+  
+// Update
+updateActaSeguimientoDisciplinario(id, actaSeguimientoDisciplinario: ActaSeguimientoDisciplinario) {
+  return this.actaSeguimientoDisciplinarioRef.update({
+    COMPROMISO: actaSeguimientoDisciplinario.COMPROMISO,
+    DESCARGO_ESTUDIANTE: actaSeguimientoDisciplinario.DESCARGO_ESTUDIANTE,
+    DESCRIPCION_DE_CONDUCTA: actaSeguimientoDisciplinario.DESCRIPCION_DE_CONDUCTA,
+    FECHA_ACTA: actaSeguimientoDisciplinario.FECHA_ACTA,
+    FIRMA_ESTUDIANTE: actaSeguimientoDisciplinario.FIRMA_ESTUDIANTE,
+    FIRMA_DOCENTES: actaSeguimientoDisciplinario.FIRMA_DOCENTES,
+    TIPO: actaSeguimientoDisciplinario.TIPO,
+    ID_ACTA : actaSeguimientoDisciplinario.ID_ACTA
+  })
+}
 
 
   

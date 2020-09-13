@@ -55,7 +55,7 @@ export class BuscarActaDetallePage {
 
     
 
-    this.readActaSeguimientoDisciplinario();
+    
 
     
     
@@ -64,23 +64,7 @@ export class BuscarActaDetallePage {
 
   //Metodo a corregir lectura de entidad que busca le numero de acta del router link
 
-  readActaSeguimientoDisciplinario(){
-    this.actaSeguimientoDisciplinarioService.getActaSeguimientoDisciplinario().subscribe(data => {
-      this.actasSeguimientoDisciplinario = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}
-        } as unknown as ActaSeguimientoDisciplinario;
-      })
-      
-      const idEntrada = parseInt(this.route.snapshot.paramMap.get('actaId'));
-      this.actasSeguimientoDisciplinario.forEach(actaIt => {
-        if(actaIt.id == idEntrada){
-          this.acta = actaIt;
-        }  
-      });
-    });
-  }
+  
 
   ionViewDidEnter() {
     this.defaultHref = `/app/tabs/schedule`;
