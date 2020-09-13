@@ -10,6 +10,10 @@ import { Cursos } from '../../entidades/cursos/cursos.model';
 
 import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.service';
 import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
+
+import { ObservadorService}  from '../../servicios/Observador/Observador.service';
+import {Observador} from '../../entidades/Observador/Observador.model';
+
 import { NavigationExtras, Router } from '@angular/router';
 
 
@@ -36,11 +40,14 @@ export class ObservadorPage implements AfterViewInit {
 
   envio: string;
 
+  observador: Observador[];//esta es la entidad
+
   constructor(
       //Inyeccion servicios de conexion para cada entidad
       public alertController: AlertController,
       private cursosservice: CursosService,
       private estudiantesservice: EstudiantesService,
+      private observadorService: ObservadorService,   //crear variable 
       public router:Router
     ) { }
 
@@ -48,6 +55,7 @@ export class ObservadorPage implements AfterViewInit {
 
     this.getCursosList();
     this.getEstudiantesList();
+    this.getObservadorList();
   }
 
   //CRUD de Entidad -- cursos -- utilizando el servicio 'cursosservice'
@@ -69,6 +77,16 @@ export class ObservadorPage implements AfterViewInit {
       
     })   
   }
+
+//CRUD de Entidad -- Observador -- utilizando el servicio 'ObservadorService'
+
+getObservadorList(){
+  this.observadorService.getObservadorList().valueChanges().subscribe(observador => {
+    this.observador =observador;
+    console.log(this.observador);
+    
+  })   
+}
 
   //Metodo que toma el valor del curso seleccionado y lista sus estudiantes
   onChangeCursos($event){   
