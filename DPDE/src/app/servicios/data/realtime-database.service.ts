@@ -3,7 +3,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Cursos } from '../../entidades/cursos/cursos.model';
+import { Cursos } from '../../entidades/Cursos/Cursos.model';
 
 @Injectable({
   providedIn: 'root'

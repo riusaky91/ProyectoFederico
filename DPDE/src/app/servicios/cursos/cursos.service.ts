@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 //Importando Conexion a Firebase y Entidad
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
-import { Cursos } from '../../entidades/cursos/cursos.model';
+import { Cursos } from '../../entidades/Cursos/Cursos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +19,10 @@ export class CursosService {
 
 
 // Create
-createCurso(curso: Cursos) {
+createCurso(cursos: Cursos) {
   return this.cursosListRef.push({
-    IDCURSO: curso.IDCURSO,
-    DIRECTOR_GRUPO : curso.DIRECTOR_GRUPO,
-    SALON: curso.SALON
+    ID_CURSO: cursos.ID_CURSO,
+    ID_FUNCIONARIO:cursos.ID_FUNCIONARIO    
   })
 }
 
@@ -40,17 +39,16 @@ getCursosList() {
 }
 
 // Delete
-deleteCurso(id: string) {
+deleteCursos(id: string) {
   this.cursosRef = this.db.object('/CURSOS/' + id);
   this.cursosRef.remove();
 }
   
 // Update
-updateCurso(id, curso: Cursos) {
+updateCurso(id, cursos: Cursos) {
   return this.cursosRef.update({
-    IDCURSO: curso.IDCURSO,
-    DIRECTOR_GRUPO : curso.DIRECTOR_GRUPO,
-    SALON: curso.SALON
+    ID_CURSO: cursos.ID_CURSO,
+    ID_FUNCIONARIO:cursos.ID_FUNCIONARIO
   })
 }
 

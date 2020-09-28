@@ -6,11 +6,11 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 /*Importando servicios y entidades para conexion a BD*/
 
-import { CursosService } from '../../servicios/cursos/cursos.service';
-import { Cursos } from '../../entidades/cursos/cursos.model';
+import { CursosService } from '../../servicios/Cursos/Cursos.service';
+import { Cursos } from '../../entidades/Cursos/Cursos.model';
 
-import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.service';
-import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
+import { EstudiantesService } from '../../servicios/Estudiantes/Estudiantes.service';
+import { Estudiantes } from '../../entidades/Estudiantes/Estudiantes.model';
 import { NgForm } from '@angular/forms';
 import { ActaSeguimientoDisciplinarioService } from '../../servicios/ActaSeguimientoDisciplinario/actaSeguimientoDisciplinario.service';
 import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDisciplinario/ActaSeguimientoDisciplinario.model';
@@ -187,7 +187,7 @@ export class CrearActaRegistroPage implements OnInit{
   onChangeCursos($event){   
     this.estudiantesPorCurso = [];
     this.estudiantes.forEach(estudiante => {
-      if(estudiante.IDCURSO == $event.detail.value)        
+      if(estudiante.ID_CURSO == $event.detail.value)        
         this.estudiantesPorCurso.push(estudiante);
       this.habilitarEstudiates = false;  
     });
@@ -201,7 +201,7 @@ export class CrearActaRegistroPage implements OnInit{
   //Carga los datos del estudiante en el objeto acta
   onChangeEstudiantes($event){   
     this.estudianteElegido = true;
-    this.acta.datosEstudiante  = this.estudiantesPorCurso.find(x=>x.IDESTUDIANTE== $event.detail.value);
+    this.acta.datosEstudiante  = this.estudiantesPorCurso.find(x=>x.ID_ESTUDIANTE== $event.detail.value);
   }
 
   async  guardarActaAlerta() {

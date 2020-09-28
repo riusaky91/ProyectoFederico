@@ -1,6 +1,5 @@
 export class Cursos {
     $key: string;
-    IDCURSO: string;
-    DIRECTOR_GRUPO: string;
-    SALON: string
+    ID_CURSO: string;
+    ID_FUNCIONARIO: string
 }

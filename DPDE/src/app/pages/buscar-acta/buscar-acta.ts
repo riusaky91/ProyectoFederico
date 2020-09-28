@@ -8,11 +8,11 @@ import { UserData } from '../../providers/user-data';
 
 /*Importando servicios y entidades para conexion a BD*/
 
-import { CursosService } from '../../servicios/cursos/cursos.service';
-import { Cursos } from '../../entidades/cursos/cursos.model';
+import { CursosService } from '../../servicios/Cursos/Cursos.service';
+import { Cursos } from '../../entidades/Cursos/Cursos.model';
 
-import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.service';
-import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
+import { EstudiantesService } from '../../servicios/Estudiantes/Estudiantes.service';
+import { Estudiantes } from '../../entidades/Estudiantes/Estudiantes.model';
 
 import { ActaSeguimientoDisciplinarioService } from '../../servicios/ActaSeguimientoDisciplinario/actaSeguimientoDisciplinario.service';
 import { ActaSeguimientoDisciplinario } from '../../entidades/ActaSeguimientoDisciplinario/ActaSeguimientoDisciplinario.model';
@@ -131,7 +131,7 @@ export class BuscarActaPage implements OnInit {
   onChangeCursos($event){   
     this.estudiantesPorCurso = [];
     this.estudiantes.forEach(estudiante => {
-      if(estudiante.IDCURSO == $event.detail.value)        
+      if(estudiante.ID_CURSO == $event.detail.value)        
         this.estudiantesPorCurso.push(estudiante);
       this.habilitarEstudiates = false;  
     });

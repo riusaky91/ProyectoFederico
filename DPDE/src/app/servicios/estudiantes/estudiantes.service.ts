@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 //Importando Conexion a Firebase y Entidad
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
-import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
+import { Estudiantes } from '../../entidades/Estudiantes/Estudiantes.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,24 +19,27 @@ export class EstudiantesService {
   //CRUD BASICO COLECCIÓN --estudiantes--
 
 // Create
-createEstudiante(estudiante: Estudiantes) {
+createEstudiante(estudiantes: Estudiantes) {
   return this.estudiantesListRef.push({
-    IDESTUDIANTE: estudiante.IDESTUDIANTE,
-    IDCURSO: estudiante.IDCURSO,
-    DIRECCION: estudiante.DIRECCION,
-    EDAD: estudiante.EDAD,
-    EMAIL: estudiante.EMAIL,
-    EPS: estudiante.EPS,
-    GRUPO_SANGUINEO:estudiante.GRUPO_SANGUINEO,
-    JORNADA:estudiante.JORNADA,
-    NOMBRE:estudiante.NOMBRE,
-    TELEFONO: estudiante.TELEFONO,
-    TIPO_DOCUMENTO: estudiante.TIPO_DOCUMENTO
+    CODIGO:estudiantes.CODIGO,
+    DIRECCION: estudiantes.DIRECCION,
+    EDAD: estudiantes.EDAD,
+    EMAIL: estudiantes.EMAIL,
+    EPS: estudiantes.EPS,
+    FOTO:estudiantes.FOTO,
+    GRUPO_SANGUINEO:estudiantes.GRUPO_SANGUINEO,
+    ID_CURSO:estudiantes.ID_CURSO,
+    ID_ESTUDIANTE: estudiantes.ID_ESTUDIANTE,
+    ID_OBSERVADOR:estudiantes.ID_OBSERVADOR,
+    JORNADA:estudiantes.JORNADA,
+    NOMBRE_APELLIDO:estudiantes.NOMBRE_APELLIDO,    
+    TELEFONO: estudiantes.TELEFONO,
+    TIPO_DOCUMENTO: estudiantes.TIPO_DOCUMENTO
   })
 }
 
 // Read Single
-getEstudiante(id: string) {
+getEstudiantes(id: string) {
   this.estudiantesRef = this.db.object('/ESTUDIANTES/' + id);
   return this.estudiantesRef;
 }
@@ -54,19 +57,22 @@ deleteEstudiante(id: string) {
 }
   
 // Update
-updateEstudiante(id, estudiante: Estudiantes) {
+updateEstudiante(id, estudiantes: Estudiantes) {
   return this.estudiantesRef.update({
-    IDESTUDIANTE: estudiante.IDESTUDIANTE,
-    IDCURSO: estudiante.IDCURSO,
-    DIRECCION: estudiante.DIRECCION,
-    EDAD: estudiante.EDAD,
-    EMAIL: estudiante.EMAIL,
-    EPS: estudiante.EPS,
-    GRUPO_SANGUINEO:estudiante.GRUPO_SANGUINEO,
-    JORNADA:estudiante.JORNADA,
-    NOMBRE:estudiante.NOMBRE,
-    TELEFONO: estudiante.TELEFONO,
-    TIPO_DOCUMENTO: estudiante.TIPO_DOCUMENTO
+    CODIGO:estudiantes.CODIGO,
+    DIRECCION: estudiantes.DIRECCION,
+    EDAD: estudiantes.EDAD,
+    EMAIL: estudiantes.EMAIL,
+    EPS: estudiantes.EPS,
+    FOTO:estudiantes.FOTO,
+    GRUPO_SANGUINEO:estudiantes.GRUPO_SANGUINEO,
+    ID_CURSO:estudiantes.ID_CURSO,
+    ID_ESTUDIANTE: estudiantes.ID_ESTUDIANTE,
+    ID_OBSERVADOR:estudiantes.ID_OBSERVADOR,
+    JORNADA:estudiantes.JORNADA,
+    NOMBRE_APELLIDO:estudiantes.NOMBRE_APELLIDO,    
+    TELEFONO: estudiantes.TELEFONO,
+    TIPO_DOCUMENTO: estudiantes.TIPO_DOCUMENTO    
   })
 }
 }

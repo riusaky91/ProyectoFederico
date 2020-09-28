@@ -5,11 +5,11 @@ import { DOCUMENT} from '@angular/common';
 
 /*Importando servicios y entidades para conexion a BD*/
 
-import { CursosService } from '../../servicios/cursos/cursos.service';
-import { Cursos } from '../../entidades/cursos/cursos.model';
+import { CursosService } from '../../servicios/Cursos/Cursos.service';
+import { Cursos } from '../../entidades/Cursos/Cursos.model';
 
-import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.service';
-import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
+import { EstudiantesService } from '../../servicios/Estudiantes/Estudiantes.service';
+import { Estudiantes } from '../../entidades/Estudiantes/Estudiantes.model';
 
 import { FuncionariosService } from '../../servicios/Funcionarios/Funcionarios.service';
 import { Funcionarios } from '../../entidades/Funcionarios/Funcionarios.model';
@@ -72,16 +72,14 @@ export class ObservadorPage implements AfterViewInit {
         this.cursos = cursos
         console.log(this.cursos);
       })
-    }
-    
+    }    
 
   //CRUD de Entidad -- estudiantes -- utilizando el servicio 'estudiantesservice'
 
   getEstudiantesList(){
     this.estudiantesservice.getEstudiantesList().valueChanges().subscribe(estudiantes => {
       this.estudiantes =estudiantes;
-      console.log(this.estudiantes);
-      
+      console.log(this.estudiantes);      
     })   
   }
 
@@ -107,7 +105,7 @@ getObservadorList(){
   onChangeCursos($event){   
     this.estudiantesPorCurso = [];
     this.estudiantes.forEach(estudiante => {
-      if(estudiante.IDCURSO == $event.detail.value)        
+      if(estudiante.ID_CURSO == $event.detail.value)        
         this.estudiantesPorCurso.push(estudiante);
       this.habilitarEstudiates = false;  
     });
@@ -120,14 +118,14 @@ getObservadorList(){
 
   //Metodo que toma el id del estudiante seleccionado y guarda su valor en el datosEstudiante
   onChangeEstudiantes($event){   
-    this.datosEstudiante  = this.estudiantes.find(x=>x.IDESTUDIANTE== $event.detail.value);
+    this.datosEstudiante  = this.estudiantes.find(x=>x.ID_ESTUDIANTE== $event.detail.value);
     console.log(this.datosEstudiante);
     this.estudianteElegido = true;
   }
 
   //Metodo que toma el año seleccionado y el id del estudiante y los envia en un string al observador detalle
   onChangeLapso($event){     
-    this.envio = this.datosEstudiante.IDESTUDIANTE + "-" + $event.detail.value
+    this.envio = this.datosEstudiante.ID_ESTUDIANTE + "-" + $event.detail.value
     console.log(this.envio);
   }
   
