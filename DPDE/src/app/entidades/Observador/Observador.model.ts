@@ -1,0 +1,31 @@
+export class Observador {
+    $key: string;
+    ANUALIDAD:string;  
+    ASIGNATURA_PERIDO_CUARTO: string;   
+    ASIGNATURA_PERIODO_DOS: string;
+    ASIGNATURA_PERIODO_TRES: string;
+    ASIGNATURA_PERIODO_UNO: string;
+    CURSOS_HERMANOS: string;
+    ESTADO_ESTUDIANTE: string;
+    HERMANOS: string;
+    HERMANOS_INSTITUCION: string;
+    ID_ACTA: number;
+    ID_ESTUDIANTE: number;
+    ID_FUNCIONARIO:number;
+    ID_OBSERVADOR:number;
+    INSTITUCION_ANTERIOR: string;
+    NOMBRES_APELLIDOS_MADRE: string;
+    NOMBRES_APELLIDOS_PADRE: string;
+    NOMBRE_ACUDIENTE: string;
+    OBSERVACIONES_MADRE: string;
+    OBSERVACIONES_PADRE: string;
+    OCUPACION_MADRE: string;
+    OCUPACION_PADRE: string;
+    PERSONAS_VIVE: string;
+    SITUACION_ESTUDIANTE: string;
+    TELEFONO_ACUDIENTE: string;
+    TELEFONO_CASA_MADRE: string;
+    TELEFONO_CASA_PADRE: string;
+    TELEFONO_TRABAJO_MADRE: string;
+    TELEFONO_TRABAJO_PADRE: string;
+}

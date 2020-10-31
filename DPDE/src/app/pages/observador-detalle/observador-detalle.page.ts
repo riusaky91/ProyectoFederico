@@ -6,8 +6,8 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 
 //Importacion de estudiantes Servicio y Modelo
 
-import { EstudiantesService } from '../../servicios/estudiantes/estudiantes.service';
-import { Estudiantes } from '../../entidades/estudiantes/estudiantes.model';
+import { EstudiantesService } from '../../servicios/Estudiantes/Estudiantes.service';
+import { Estudiantes } from '../../entidades/Estudiantes/Estudiantes.model';
 
 
 //PDF
@@ -58,10 +58,10 @@ generarPDF(){
         style: 'Cabecera'
       },
       
-      'Nombre del Estudiante: '+this.estudiante.NOMBRE,
-      'Documento: '+this.estudiante.IDESTUDIANTE,
+      'Nombre del Estudiante: '+this.estudiante.NOMBRE_APELLIDO,
+      'Documento: '+this.estudiante.ID_ESTUDIANTE,
       'Jornada:'+ this.estudiante.JORNADA,
-      'Curso:'+this.estudiante.IDCURSO,
+      'Curso:'+this.estudiante.ID_CURSO,
       'Dirección/Barrio: ',
 
       'Teléfonos: '+this.estudiante.TELEFONO,
