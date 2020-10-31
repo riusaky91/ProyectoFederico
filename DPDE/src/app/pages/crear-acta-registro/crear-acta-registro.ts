@@ -52,13 +52,25 @@ export class CrearActaRegistroPage implements OnInit{
     this.signaturePad.clear()
   }
 
-  drawStart(){
+  drawStartEstudiante(){
     console.log("inicio de dibujo");
   }
 
-  drawComplete(){
+  drawCompleteEstudiante(){
     console.log("fin de dibujo");
     this.firmaEstudiante = this.signaturePad.toDataURL();
+    this.actaCreada.FIRMA_ESTUDIANTE = this.signaturePad.toDataURL();
+    console.log(this.signaturePad.toDataURL());
+  }
+  
+  drawStartDocente(){
+    console.log("inicio de dibujo");
+  }
+
+  drawCompleteDocente(){
+    console.log("fin de dibujo");
+    this.firmaEstudiante = this.signaturePad.toDataURL();
+    this.actaCreada.FIRMA_DOCENTES = this.signaturePad.toDataURL();
     console.log(this.signaturePad.toDataURL());
   }
 

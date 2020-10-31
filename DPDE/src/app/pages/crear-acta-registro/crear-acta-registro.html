@@ -121,8 +121,7 @@
 
       <ion-item>
         <ion-label position="stacked">Firma del Estudiante</ion-label>
-        <ion-textarea></ion-textarea>
-        <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+        <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStartEstudiante()" (onEndEvent)="drawCompleteEstudiante()"></signature-pad>
       </ion-item>
       
       <ion-item>
@@ -133,7 +132,7 @@
     
       <ion-item>
         <ion-label position="stacked">Firma del Docente</ion-label>
-        <ion-textarea></ion-textarea>
+        <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStartDocente()" (onEndEvent)="drawCompleteDocente()"></signature-pad>
       </ion-item>
 
       <ion-list *ngIf="tipoActa == 2 || tipoActa == 3">
