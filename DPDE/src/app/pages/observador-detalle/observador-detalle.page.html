@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <h2>Nombre Estudiante</h2>
+  <h2>{{estudiante.NOMBRE_APELLIDO}}</h2>
   
   <mat-accordion>
     <mat-expansion-panel>
@@ -16,28 +16,16 @@
         <mat-panel-title>
           Informacion Personal
         </mat-panel-title>
-        <mat-panel-description>
-          Estudiante
-        </mat-panel-description>
       </mat-expansion-panel-header>
-      Nombre del Estudiante:
-        {{estudiante.NOMBRE}}<br>
-        Documento:
-        {{estudiante.IDESTUDIANTE}}<br>
-        Jornada:
-        {{estudiante.JORNADA}}<br>
-        Curso:
-        {{estudiante.IDCURSO}}<br>
-        Dirección/Barrio:<br>
-
-        Teléfonos:<br>
-        {{estudiante.TELEFONO}}<br>
-        EPS:
-        {{estudiante.EPS}}<br>
-        Grupo Sanguineo y RH:<br>
-
-        Correo Electronico:
-        {{estudiante.EMAIL}}<br>
+        Nombre del Estudiante: {{estudiante.NOMBRE_APELLIDO}}<br>
+        Documento: {{estudiante.ID_ESTUDIANTE}}<br>
+        Jornada: {{estudiante.JORNADA}}<br>
+        Curso: {{estudiante.ID_CURSO}}<br>
+        Dirección/Barrio: {{estudiante.DIRECCION}}<br>
+        Teléfonos: {{estudiante.TELEFONO}}<br>
+        EPS: {{estudiante.EPS}}<br>
+        Grupo Sanguineo y RH: {{estudiante.GRUPO_SANGUINEO}}<br>
+        Correo Electronico: {{estudiante.EMAIL}}<br>
     </mat-expansion-panel>
     <br>
     <mat-expansion-panel>

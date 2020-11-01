@@ -60,14 +60,14 @@ generarPDF(){
       
       'Nombre del Estudiante: '+this.estudiante.NOMBRE_APELLIDO,
       'Documento: '+this.estudiante.ID_ESTUDIANTE,
-      'Jornada:'+ this.estudiante.JORNADA,
-      'Curso:'+this.estudiante.ID_CURSO,
-      'Dirección/Barrio: ',
+      'Jornada: '+ this.estudiante.JORNADA,
+      'Curso: '+this.estudiante.ID_CURSO,
+      'Dirección/Barrio: '+this.estudiante.DIRECCION,
 
       'Teléfonos: '+this.estudiante.TELEFONO,
       
       'EPS: '+this.estudiante.EPS,
-      'Grupo Sanguineo y RH: ',      
+      'Grupo Sanguineo y RH: '+this.estudiante.GRUPO_SANGUINEO,
       'Correo Electronico: '+this.estudiante.EMAIL+'\n\n',
       {
         style: 'tabla',

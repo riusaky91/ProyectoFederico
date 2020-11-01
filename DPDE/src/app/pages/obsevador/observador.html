@@ -12,7 +12,7 @@
     <ion-item >
       <ion-label>Curso</ion-label>
       <ion-select (ionChange)="onChangeCursos($event)" ok-text="Aceptar" cancel-text="Cancelar" placeholder="Seleccione el Curso">
-        <ion-select-option *ngFor="let curso of cursos">{{curso.IDCURSO}}</ion-select-option>
+        <ion-select-option *ngFor="let curso of cursos">{{curso.ID_CURSO}}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -20,8 +20,8 @@
       <ion-label>Estudiante</ion-label>
       <ion-select disabled={{habilitarEstudiates}} ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="onChangeEstudiantes($event)" placeholder="Seleccione el Estudiante">
         <ion-select-option *ngFor="let estudiante of estudiantesPorCurso" 
-        value="{{estudiante.IDESTUDIANTE}}">        
-            {{estudiante.NOMBRE}}
+        value="{{estudiante.ID_ESTUDIANTE}}">        
+            {{estudiante.NOMBRE_APELLIDO}}
         </ion-select-option>
       </ion-select>
     </ion-item>
@@ -29,8 +29,8 @@
     <div *ngIf= "estudianteElegido" >
       <ion-item>
         <ion-label class="ion-text-wrap">
-          {{datosEstudiante.NOMBRE}}<br>
-          Curso: {{datosEstudiante.IDCURSO}} <br>
+          {{datosEstudiante.NOMBRE_APELLIDO}}<br>
+          Curso: {{datosEstudiante.ID_CURSO}} <br>
           Edad: {{datosEstudiante.EDAD}} años <br>
           Jornada: Mañana
         </ion-label>

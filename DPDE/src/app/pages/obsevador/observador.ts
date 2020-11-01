@@ -17,6 +17,9 @@ import { Funcionarios } from '../../entidades/Funcionarios/Funcionarios.model';
 import { ObservadorService}  from '../../servicios/Observador/Observador.service';
 import {Observador} from '../../entidades/Observador/Observador.model';
 
+import {ActasService}  from '../../servicios/Actas/Actas.service';
+import {Actas} from '../../entidades/Actas/Actas.model';
+
 import { NavigationExtras, Router } from '@angular/router';
 
 
@@ -47,6 +50,8 @@ export class ObservadorPage implements AfterViewInit {
 
   observador: Observador[];//esta es la entidad 
 
+  actas: Actas[];//esta es la entidad 
+
   constructor(
       //Inyeccion servicios de conexion para cada entidad
       public alertController: AlertController,
@@ -54,6 +59,7 @@ export class ObservadorPage implements AfterViewInit {
       private estudiantesservice: EstudiantesService,
       private funcionariosService: FuncionariosService,
       private observadorService: ObservadorService,   //crear variable 
+      private actasService: ActasService,   //crear variable 
       public router:Router
     ) { }
 
@@ -63,6 +69,7 @@ export class ObservadorPage implements AfterViewInit {
     this.getEstudiantesList();
     this.getFuncionariosList(); //donde se activa metodo creado
     this.getObservadorList();
+    this.getActasList();
   }
 
   //CRUD de Entidad -- cursos -- utilizando el servicio 'cursosservice'
@@ -70,7 +77,7 @@ export class ObservadorPage implements AfterViewInit {
   getCursosList() {
     this.cursosservice.getCursosList().valueChanges().subscribe(cursos => {
         this.cursos = cursos
-        console.log(this.cursos);
+        console.log("Cursos: ",this.cursos);
       })
     }    
 
@@ -79,7 +86,7 @@ export class ObservadorPage implements AfterViewInit {
   getEstudiantesList(){
     this.estudiantesservice.getEstudiantesList().valueChanges().subscribe(estudiantes => {
       this.estudiantes =estudiantes;
-      console.log(this.estudiantes);      
+      console.log("Estudiantes: ",this.estudiantes);      
     })   
   }
 
@@ -88,7 +95,7 @@ export class ObservadorPage implements AfterViewInit {
 getFuncionariosList(){
   this.funcionariosService.getFuncionariosList().valueChanges().subscribe(funcionarios => {
     this.funcionarios =funcionarios;
-    console.log(this.funcionarios);
+    console.log("Funcionarios: ",this.funcionarios);
     
   })   
 }
@@ -96,8 +103,16 @@ getFuncionariosList(){
 getObservadorList(){
   this.observadorService.getObservadorList().valueChanges().subscribe(observador => {
     this.observador =observador;
-    console.log(this.observador);
+    console.log("Observador: ",this.observador);
     
+  })   
+}
+
+//CRUD de Entidad -- Actas -- utilizando el servicio 'ActasService'
+getActasList(){
+  this.actasService.getActasList().valueChanges().subscribe(actas => {
+    this.actas =actas;
+    console.log("Actas: ",this.actas);
   })   
 }
 
